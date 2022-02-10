@@ -68,21 +68,21 @@ func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-type Pair struct {
+type Pair1631 struct {
 	x, y, maxDiff int
 }
 
-type HP []Pair
+type HP1631 []Pair1631
 
-func (H HP) Len() int { return len(H) }
+func (H HP1631) Len() int { return len(H) }
 
-func (H HP) Less(i, j int) bool { return H[i].maxDiff < H[j].maxDiff }
+func (H HP1631) Less(i, j int) bool { return H[i].maxDiff < H[j].maxDiff }
 
-func (H HP) Swap(i, j int) { H[i], H[j] = H[j], H[i] }
+func (H HP1631) Swap(i, j int) { H[i], H[j] = H[j], H[i] }
 
-func (H *HP) Push(x interface{}) { *H = append(*H, x.(Pair)) }
+func (H *HP1631) Push(x interface{}) { *H = append(*H, x.(Pair1631)) }
 
-func (H *HP) Pop() (t interface{}) {
+func (H *HP1631) Pop() (t interface{}) {
 	t = (*H)[len(*H)-1]
 	*H = (*H)[:len(*H)-1]
 	return
@@ -102,7 +102,7 @@ func minimumEffortPath(heights [][]int) (ret int) {
 		}
 		return x
 	}
-	hp := &HP{}
+	hp := &HP1631{}
 	const INF = math.MaxInt64
 	next := [4][2]int{{0, -1}, {0, 1}, {1, 0}, {-1, 0}}
 	M, N := len(heights), len(heights[0])
@@ -114,9 +114,9 @@ func minimumEffortPath(heights [][]int) (ret int) {
 		}
 	}
 	m[0][0] = 0
-	heap.Push(hp, Pair{x: 0, y: 0})
+	heap.Push(hp, Pair1631{x: 0, y: 0})
 	for true {
-		p := heap.Pop(hp).(Pair)
+		p := heap.Pop(hp).(Pair1631)
 		if p.x == M-1 && p.y == N-1 {
 			return p.maxDiff
 		}
@@ -127,7 +127,7 @@ func minimumEffortPath(heights [][]int) (ret int) {
 			if nx, ny := p.x+v[0], p.y+v[1]; nx >= 0 && ny >= 0 && nx < M && ny < N {
 				if diff := max(p.maxDiff, abs(heights[nx][ny]-heights[p.x][p.y])); m[nx][ny] > diff {
 					m[nx][ny] = diff
-					heap.Push(hp, Pair{x: nx, y: ny, maxDiff: m[nx][ny]})
+					heap.Push(hp, Pair1631{x: nx, y: ny, maxDiff: m[nx][ny]})
 				}
 			}
 		}
