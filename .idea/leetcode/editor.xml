@@ -36,6 +36,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1984学生分数的最小差值.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1984学生分数的最小差值.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1984" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1984学生分数的最小差值.go" />
+              <option name="titleSlug" value="minimum-difference-between-highest-and-lowest-of-k-scores" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/2006差的绝对值为 K 的数对数目.go">
           <value>
             <LeetcodeEditor>
