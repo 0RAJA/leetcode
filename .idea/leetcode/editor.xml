@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LeetcodeEditor">
+    <option name="projectConfig">
+      <map>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1447最简分数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1447最简分数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1447" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1447最简分数.go" />
+              <option name="titleSlug" value="simplified-fractions" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1631最小体力消耗路径.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1631最小体力消耗路径.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1631" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1631最小体力消耗路径.go" />
+              <option name="titleSlug" value="path-with-minimum-effort" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1928规定时间内到达终点的最小花费.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1928规定时间内到达终点的最小花费.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1928" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1928规定时间内到达终点的最小花费.go" />
+              <option name="titleSlug" value="minimum-cost-to-reach-destination-in-time" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/2006差的绝对值为 K 的数对数目.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/2006差的绝对值为 K 的数对数目.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com2006" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/2006差的绝对值为 K 的数对数目.go" />
+              <option name="titleSlug" value="count-number-of-pairs-with-absolute-difference-k" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/743网络延迟时间.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/743网络延迟时间.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com743" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/743网络延迟时间.go" />
+              <option name="titleSlug" value="network-delay-time" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/787K 站中转内最便宜的航班.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/787K 站中转内最便宜的航班.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com787" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/787K 站中转内最便宜的航班.go" />
+              <option name="titleSlug" value="cheapest-flights-within-k-stops" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/{1405}最长快乐字符串.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/{1405}最长快乐字符串.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1405" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/{1405}最长快乐字符串.go" />
+              <option name="titleSlug" value="longest-happy-string" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/1405]最长快乐字符串.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/doc/content/{1405}最长快乐字符串.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1405" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/{1405}最长快乐字符串.go" />
+              <option name="titleSlug" value="longest-happy-string" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/[1405]最长快乐字符串.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/doc/content/{1405}最长快乐字符串.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1405" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/{1405}最长快乐字符串.go" />
+              <option name="titleSlug" value="longest-happy-string" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/{1405}最长快乐字符串.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/{1405}最长快乐字符串.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1405" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/{1405}最长快乐字符串.go" />
+              <option name="titleSlug" value="longest-happy-string" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/{1}两数之和.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/doc/content/{1}两数之和.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/leetcode/editor/cn/{1}两数之和.go" />
+              <option name="titleSlug" value="two-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
