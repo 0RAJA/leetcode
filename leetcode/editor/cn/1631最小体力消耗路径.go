@@ -54,12 +54,17 @@ package main
 import (
 	"container/heap"
 	"fmt"
+	"github.com/0RAJA/Rutils/struct/set/unionSet"
 	"math"
+	"sort"
 )
 
 func main() {
 	heights := [][]int{{1, 2, 3}, {3, 8, 4}, {5, 3, 5}}
 	fmt.Println(minimumEffortPath(heights))
+	heights = [][]int{{1, 2, 2}, {3, 8, 2}, {5, 3, 5}}
+	fmt.Println(minimumEffortPath2(heights))
+	fmt.Println(minimumEffortPath2([][]int{{3}}))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -83,6 +88,7 @@ func (H *HP) Pop() (t interface{}) {
 	return
 }
 
+//类似于启发性搜索，从一个点拓展到全部
 func minimumEffortPath(heights [][]int) (ret int) {
 	max := func(a, b int) int {
 		if a < b {
@@ -114,7 +120,7 @@ func minimumEffortPath(heights [][]int) (ret int) {
 		if p.x == M-1 && p.y == N-1 {
 			return p.maxDiff
 		}
-		if m[p.x][p.y] < p.maxDiff {
+		if m[p.x][p.y] < p.maxDiff { //剪枝，比之前的记录值大就没必要继续走了
 			continue
 		}
 		for _, v := range next {
@@ -127,6 +133,41 @@ func minimumEffortPath(heights [][]int) (ret int) {
 		}
 	}
 	return
+}
+
+//使用并查集，将所有边按照diff排序，然后加入并查集中，同时判断起点和终点是否重合，重合就返回此刻的diff
+func minimumEffortPath2(heights [][]int) (ret int) {
+	abs := func(x int) int {
+		if x < 0 {
+			return -x
+		}
+		return x
+	}
+	m, n := len(heights), len(heights[0])
+	type Edge struct {
+		s, e, diff int
+	}
+	edges := []Edge{}
+	for x, row := range heights {
+		for y, v := range row {
+			idx := x*n + y
+			if x > 0 {
+				edges = append(edges, Edge{s: idx - n, e: idx, diff: abs(v - heights[x-1][y])})
+			}
+			if y > 0 {
+				edges = append(edges, Edge{s: idx - 1, e: idx, diff: abs(v - heights[x][y-1])})
+			}
+		}
+	}
+	sort.Slice(edges, func(i, j int) bool { return edges[i].diff < edges[j].diff })
+	myset := unionSet.NewSet(m * n)
+	for _, edge := range edges {
+		myset.Union(edge.s, edge.e)
+		if myset.InSameSet(0, m*n-1) {
+			return edge.diff
+		}
+	}
+	return 0 //特殊情况
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
