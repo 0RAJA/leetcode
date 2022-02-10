@@ -90,8 +90,9 @@ func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
+// 由题意得路径越长总时间越长，所以先求第二短的路径然后计算时间
 func secondMinimum(n int, edges [][]int, time, change int) (ans int) {
-	graph := make([][]int, n+1)
+	graph := make([][]int, n+1) //邻接表
 	for _, e := range edges {
 		x, y := e[0], e[1]
 		graph[x] = append(graph[x], y)
@@ -104,9 +105,10 @@ func secondMinimum(n int, edges [][]int, time, change int) (ans int) {
 	for i := 2; i <= n; i++ {
 		dist[i] = [2]int{math.MaxInt32, math.MaxInt32}
 	}
+
 	type pair struct{ x, d int }
 	q := []pair{{1, 0}}
-	for dist[n][1] == math.MaxInt32 {
+	for dist[n][1] == math.MaxInt32 { //BFS 寻找第二短的路径
 		p := q[0]
 		q = q[1:]
 		for _, next := range graph[p.x] {
@@ -121,7 +123,7 @@ func secondMinimum(n int, edges [][]int, time, change int) (ans int) {
 		}
 	}
 
-	for i := 0; i < dist[n][1]; i++ {
+	for i := 0; i < dist[n][1]; i++ { //计算花费的时间
 		if ans%(change*2) >= change {
 			ans += change*2 - ans%(change*2)
 		}

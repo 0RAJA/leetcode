@@ -37,13 +37,28 @@
 
 package main
 
-func main() {
+import "fmt"
 
+func main() {
+	fmt.Println(simplifiedFractions(4))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func simplifiedFractions(n int) []string {
-	return nil
+func gcd(a, b int) int {
+	for a%b != 0 {
+		a, b = b, a%b
+	}
+	return b
+}
+func simplifiedFractions(n int) (ret []string) {
+	for b := 2; b <= n; b++ {
+		for a := 1; a < b; a++ {
+			if gcd(a, b) == 1 {
+				ret = append(ret, fmt.Sprintf("%d/%d", a, b))
+			}
+		}
+	}
+	return ret
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
