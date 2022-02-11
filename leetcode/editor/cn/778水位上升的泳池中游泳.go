@@ -50,74 +50,38 @@ package main
 
 import (
 	"fmt"
+	"github.com/0RAJA/Rutils/struct/set/unionSet"
 )
 
 func main() {
-	grid := [][]int{{3, 2}, {1, 0}}
+	grid := [][]int{{0, 1, 2, 3, 4}, {24, 23, 22, 21, 5}, {12, 13, 14, 15, 16}, {11, 17, 18, 19, 20}, {10, 9, 8, 7, 6}}
 	fmt.Println(swimInWater(grid))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-type Set struct {
-	parent, size []int
-}
-
-func NewSet(n int) *Set {
-	parent := make([]int, n)
-	size := make([]int, n)
-	for i := range size {
-		parent[i] = i
-		size[i] = 1
-	}
-	return &Set{parent: parent, size: size}
-}
-
-func (s *Set) find(x int) int {
-	if s.parent[x] != x {
-		s.parent[x] = s.find(s.parent[x])
-	}
-	return s.parent[x]
-}
-
-func (s *Set) union(x, y int) {
-	xf := s.find(x)
-	yf := s.find(y)
-	if xf == yf {
-		return
-	}
-	if s.size[xf] > s.size[yf] {
-		xf, yf = yf, xf
-	}
-	s.size[xf] += s.size[yf]
-	s.parent[yf] = xf
-}
-
-func (s *Set) InSameSet(x, y int) bool {
-	return s.find(x) == s.find(y)
-}
 func swimInWater(grid [][]int) (ret int) {
 	next := [4][2]int{{0, -1}, {0, 1}, {-1, 0}, {1, 0}}
 	type Point struct {
 		x, y int
 	}
-	N := len(grid) * len(grid)
-	x := make([]Point, N)
+	m, n := len(grid), len(grid)
+	x := make([]Point, m*n)
 	for i, row := range grid {
 		for j, v := range row {
 			x[v] = Point{x: i, y: j}
 		}
 	}
-	set := NewSet(N)
-	for cnt := 0; ; cnt++ {
-		p := x[cnt]
-		for i := range next {
-			nx, ny := p.x+next[i][0], p.y+next[i][1]
-			if nx >= 0 && ny >= 0 && nx < len(grid) && ny < len(grid) && grid[nx][ny] <= cnt {
-				set.union(p.x*len(grid)+p.y, nx*len(grid)+ny)
+	mySet := unionSet.NewSet(m * n)
+	for ret = 1; ; ret++ {
+		p := x[ret]
+		for _, v := range next {
+			nx, ny := p.x+v[0], p.y+v[1]
+			if nx < m && nx >= 0 && ny >= 0 && ny < n && ret >= grid[nx][ny] {
+				mySet.Union(nx*n+ny, p.x*n+p.y)
 			}
-		}
-		if set.InSameSet(0, N-1) {
-			return cnt
+			if mySet.InSameSet(0, m*n-1) {
+				return ret
+			}
 		}
 	}
 }
