@@ -61,7 +61,7 @@ func main() {
 func searchInsert(nums []int, target int) int {
 	l, r := 0, len(nums)-1
 	if target > nums[r] {
-		return r+1
+		return r + 1
 	}
 	for l < r {
 		mid := l + (r-l)/2

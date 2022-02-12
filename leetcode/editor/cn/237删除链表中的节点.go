@@ -52,7 +52,6 @@
 //
 // Related Topics 链表 👍 1018 👎 0
 
-
 package main
 
 func main() {
@@ -77,4 +76,5 @@ func deleteNode(node *ListNode) {
 		node = node.Next
 	}
 }
+
 //leetcode submit region end(Prohibit modification and deletion)

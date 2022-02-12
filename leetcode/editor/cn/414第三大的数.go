@@ -47,7 +47,7 @@ import (
 )
 
 func main() {
-	nums := []int{5,2,2}
+	nums := []int{5, 2, 2}
 	fmt.Println(thirdMax(nums))
 }
 

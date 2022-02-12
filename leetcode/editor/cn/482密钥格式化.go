@@ -55,7 +55,7 @@ func licenseKeyFormatting(s string, k int) (result string) {
 		result += strings.ToUpper(string(s[i]))
 	}
 	for i := numberOfFirst; i < len(s); i += k {
-		if len(result)>0{
+		if len(result) > 0 {
 			result += "-"
 		}
 		for j := i; j < k+i; j++ {

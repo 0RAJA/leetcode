@@ -51,7 +51,7 @@ func longestOnes(nums []int, k int) (ret int) {
 			l++
 		}
 		if cnt <= k && ret < r-l+1 {
-			ret = r-l+1
+			ret = r - l + 1
 		}
 	}
 	return

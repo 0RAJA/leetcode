@@ -41,7 +41,7 @@ import (
 )
 
 func main() {
-	nums := []int{-1,2,1,-4}
+	nums := []int{-1, 2, 1, -4}
 	target := 1
 	fmt.Println(threeSumClosest(nums, target))
 }

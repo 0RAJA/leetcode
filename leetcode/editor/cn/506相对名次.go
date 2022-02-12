@@ -77,7 +77,7 @@ func findRelativeRanks(score []int) (ret []string) {
 		case 3:
 			str = "Bronze Medal"
 		default:
-			str = strconv.Itoa(i+1)
+			str = strconv.Itoa(i + 1)
 		}
 		ret[sorted[i].index] = str
 	}
