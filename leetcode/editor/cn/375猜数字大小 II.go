@@ -73,14 +73,25 @@ import (
 )
 
 func main() {
-	fmt.Println(getMoneyAmount(4))
+	fmt.Println(getMoneyAmount(10))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
+/*
+	局部最大,全局最优
+	f(1,4)表示1到4获胜的最小值
+	则:f(1,4):
+		f(3,4) == 3 + max(f(3,2),f(4,4)) = 3
+		f(2,3) == 2 + max(f(2,1),f(3,3)) = 2
+		f(2,4) == min(2 + max(f(2,1),f(3,4)),3 + max(f(2,2),f(4,4)),4 + max(f(2,3),f(5,4))) = 3
+		f(1,2) == min(1 + max(f(1,0),f(2,2)),2 + max(f(1,1),f(3,2))) = 1
+		f(1,3) == min(1 + max(f(1,0),f(2,3)),2 + max(f(1,1),f(3,3)),3 + max(f(1,2),f(4,3))) = 2
+		f(1,4) == min(1 + max(f(1,0),f(2,4)),2 + max(f(1,1),f(3,4)),3 + max(f(1,2),f(4,4)),4 + max(f(1,3),f(5,4))) = 4
+*/
 func getMoneyAmount(n int) int {
-	nums := make([][]int, n+2)
-	for i := range nums {
-		nums[i] = make([]int, n+2)
+	dp := make([][]int, n+2)
+	for i := range dp {
+		dp[i] = make([]int, n+2)
 	}
 	max := func(a, b int) int {
 		if a > b {
@@ -94,26 +105,15 @@ func getMoneyAmount(n int) int {
 		}
 		return b
 	}
-	/*
-		局部最大,全局最优
-		f(1,4)表示1到4获胜的最小值
-		则:f(1,4):
-			f(3,4) == 3 + max(f(3,2),f(4,4)) = 3
-			f(2,3) == 2 + max(f(2,1),f(3,3)) = 2
-			f(2,4) == min(2 + max(f(2,1),f(3,4)),3 + max(f(2,2),f(4,4)),4 + max(f(2,3),f(5,4))) = 3
-			f(1,2) == min(1 + max(f(1,0),f(2,2)),2 + max(f(1,1),f(3,2))) = 1
-			f(1,3) == min(1 + max(f(1,0),f(2,3)),2 + max(f(1,1),f(3,3)),3 + max(f(1,2),f(4,3))) = 2
-			f(1,4) == min(1 + max(f(1,0),f(2,4)),2 + max(f(1,1),f(3,4)),3 + max(f(1,2),f(4,4)),4 + max(f(1,3),f(5,4))) = 4
-	*/
 	for i := n - 1; i >= 1; i-- {
 		for j := i + 1; j <= n; j++ {
-			nums[i][j] = math.MaxInt32
+			dp[i][j] = math.MaxInt32
 			for k := i; k <= j; k++ {
-				nums[i][j] = min(nums[i][j], k+max(nums[i][k-1], nums[k+1][j]))
+				dp[i][j] = min(dp[i][j], k+max(dp[i][k-1], dp[k+1][j]))
 			}
 		}
 	}
-	return nums[1][n]
+	return dp[1][n]
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
