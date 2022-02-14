@@ -14,6 +14,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1137第 N 个泰波那契数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1137第 N 个泰波那契数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1137" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1137第 N 个泰波那契数.go" />
+              <option name="titleSlug" value="n-th-tribonacci-number" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1189“气球” 的最大数量.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1189“气球” 的最大数量.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1189" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1189“气球” 的最大数量.go" />
+              <option name="titleSlug" value="maximum-number-of-balloons" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/1447最简分数.go">
           <value>
             <LeetcodeEditor>
@@ -77,6 +99,72 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/2045到达目的地的第二短时间.go" />
               <option name="titleSlug" value="second-minimum-time-to-reach-destination" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/375猜数字大小 II.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/375猜数字大小 II.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com375" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/375猜数字大小 II.go" />
+              <option name="titleSlug" value="guess-number-higher-or-lower-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/403青蛙过河.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/403青蛙过河.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com403" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/403青蛙过河.go" />
+              <option name="titleSlug" value="frog-jump" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/494目标和.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/494目标和.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com494" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/494目标和.go" />
+              <option name="titleSlug" value="target-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/540有序数组中的单一元素.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/540有序数组中的单一元素.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com540" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/540有序数组中的单一元素.go" />
+              <option name="titleSlug" value="single-element-in-a-sorted-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/552学生出勤记录 II.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/552学生出勤记录 II.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com552" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/552学生出勤记录 II.go" />
+              <option name="titleSlug" value="student-attendance-record-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/576出界的路径数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/576出界的路径数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com576" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/576出界的路径数.go" />
+              <option name="titleSlug" value="out-of-boundary-paths" />
             </LeetcodeEditor>
           </value>
         </entry>
