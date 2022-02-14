@@ -43,7 +43,7 @@ import (
 )
 
 func main() {
-	stones := []int{0, 1, 2, 3, 4, 8, 9, 11}
+	stones := []int{0, 1, 3, 5, 6, 8, 12, 17}
 	fmt.Println(canCross(stones))
 }
 
@@ -53,19 +53,22 @@ func canCross(stones []int) bool {
 	for i := range m {
 		m[i] = make(map[int]bool)
 	}
-	var dfs func(idx, lasted int) bool
-	dfs = func(idx, lasted int) (ret bool) {
+	var dfs func(idx, cnt int) (ret bool)
+	dfs = func(idx, cnt int) (ret bool) {
 		if idx == len(stones)-1 {
 			return true
 		}
-		if ret, ok := m[idx][lasted]; ok {
-			return ret
+		if ok, has := m[idx][cnt]; has {
+			return ok
 		}
-		defer func() { m[idx][lasted] = ret }()
-		for i := lasted - 1; i <= lasted+1; i++ {
-			if i > 0 {
-				next := sort.SearchInts(stones, stones[idx]+i) //通过值寻找对应下标
-				if next < len(stones) && stones[next] == stones[idx]+i && dfs(next, i) {
+		defer func() {
+			m[idx][cnt] = ret
+		}()
+		for k := cnt - 1; k <= cnt+1; k++ {
+			if k > 0 {
+				next := sort.Search(len(stones), func(i int) bool { return stones[i] >= stones[idx]+k })
+				//next := sort.SearchInts(stones, stones[idx]+k)
+				if next < len(stones) && stones[next] == stones[idx]+k && dfs(next, k) {
 					return true
 				}
 			}
@@ -74,5 +77,32 @@ func canCross(stones []int) bool {
 	}
 	return dfs(0, 0)
 }
+
+//func canCross(stones []int) bool {
+//	m := make([]map[int]bool, len(stones))
+//	for i := range m {
+//		m[i] = make(map[int]bool)
+//	}
+//	var dfs func(idx, lasted int) bool
+//	dfs = func(idx, lasted int) (ret bool) {
+//		if idx == len(stones)-1 {
+//			return true
+//		}
+//		if ret, ok := m[idx][lasted]; ok {
+//			return ret
+//		}
+//		defer func() { m[idx][lasted] = ret }()
+//		for i := lasted - 1; i <= lasted+1; i++ {
+//			if i > 0 {
+//				next := sort.SearchInts(stones, stones[idx]+i) //通过值寻找对应下标
+//				if next < len(stones) && stones[next] == stones[idx]+i && dfs(next, i) {
+//					return true
+//				}
+//			}
+//		}
+//		return false
+//	}
+//	return dfs(0, 0)
+//}
 
 //leetcode submit region end(Prohibit modification and deletion)

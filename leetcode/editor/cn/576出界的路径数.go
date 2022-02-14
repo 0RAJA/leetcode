@@ -41,15 +41,14 @@ func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-const Mod = int(1e9 + 7)
-
-var Next = [4][2]int{{-1, 0}, {0, 1}, {1, 0}, {0, -1}}
 
 func findPaths(m int, n int, maxMove int, startRow int, startColumn int) int {
+	var Next = [4][2]int{{-1, 0}, {0, 1}, {1, 0}, {0, -1}}
+	const Mod = 1e9 + 7
 	var Done = [51][51][51]int{}
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
-			for k := 0; k < maxMove+1; k++ {
+			for k := 0; k <= maxMove; k++ {
 				Done[i][j][k] = -1
 			}
 		}
@@ -65,10 +64,10 @@ func findPaths(m int, n int, maxMove int, startRow int, startColumn int) int {
 		if Done[r][c][k] != -1 {
 			return Done[r][c][k]
 		}
+		defer func() { Done[r][c][k] = ret }()
 		for i := 0; i < len(Next); i++ {
 			ret += dfs(r+Next[i][0], c+Next[i][1], k-1) % Mod
 		}
-		Done[r][c][k] = ret
 		return ret
 	}
 	return dfs(startRow, startColumn, maxMove) % Mod

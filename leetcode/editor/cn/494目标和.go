@@ -46,13 +46,12 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 )
 
 func main() {
 	nums := []int{1, 1, 1, 1, 1}
 	target := 3
-	fmt.Println(findTargetSumWaysTwo(nums, target))
+	fmt.Println(findTargetSumWays2(nums, target))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -74,24 +73,26 @@ func findTargetSumWays(nums []int, target int) int {
 }
 
 //DFS记忆化搜索
-func findTargetSumWaysTwo(nums []int, target int) int {
-	value := make(map[string]int)
-	var dfs func(int, int) int
-	dfs = func(sum, cnt int) (all int) {
-		key := strconv.Itoa(sum) + "_" + strconv.Itoa(cnt)
-		if v, ok := value[key]; ok == true {
+func findTargetSumWays2(nums []int, target int) int {
+	cache := make([]map[int]int, len(nums))
+	for i := range cache {
+		cache[i] = make(map[int]int)
+	}
+	var dfs func(sum, idx int) int
+	dfs = func(sum, idx int) (ret int) {
+		if idx == len(nums) {
+			if sum == target {
+				return 1
+			}
+			return 0
+		}
+		if v, ok := cache[idx][sum]; ok {
 			return v
 		}
-		if cnt == len(nums) {
-			if sum == target {
-				value[key] = sum + 1
-			} else {
-				value[key] = sum
-			}
-			return value[key]
-		}
-		value[key] = dfs(sum+nums[cnt], cnt+1) + dfs(sum-nums[cnt], cnt+1)
-		return value[key]
+		defer func() {
+			cache[idx][sum] = ret
+		}()
+		return dfs(sum+nums[idx], idx+1) + dfs(sum-nums[idx], idx+1)
 	}
 	return dfs(0, 0)
 }
