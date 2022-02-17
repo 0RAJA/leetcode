@@ -14,6 +14,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/10正则表达式匹配.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/10正则表达式匹配.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com10" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/10正则表达式匹配.go" />
+              <option name="titleSlug" value="regular-expression-matching" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/1137第 N 个泰波那契数.go">
           <value>
             <LeetcodeEditor>
@@ -36,6 +47,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1380矩阵中的幸运数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1380矩阵中的幸运数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1380" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1380矩阵中的幸运数.go" />
+              <option name="titleSlug" value="lucky-numbers-in-a-matrix" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/1447最简分数.go">
           <value>
             <LeetcodeEditor>
@@ -55,6 +77,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1631最小体力消耗路径.go" />
               <option name="titleSlug" value="path-with-minimum-effort" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1719重构一棵树的方案数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1719重构一棵树的方案数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1719" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1719重构一棵树的方案数.go" />
+              <option name="titleSlug" value="number-of-ways-to-reconstruct-a-tree" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -124,6 +157,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/44通配符匹配.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/44通配符匹配.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com44" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/44通配符匹配.go" />
+              <option name="titleSlug" value="wildcard-matching" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/494目标和.go">
           <value>
             <LeetcodeEditor>
@@ -165,6 +209,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/576出界的路径数.go" />
               <option name="titleSlug" value="out-of-boundary-paths" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/688骑士在棋盘上的概率.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/688骑士在棋盘上的概率.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com688" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/688骑士在棋盘上的概率.go" />
+              <option name="titleSlug" value="knight-probability-in-chessboard" />
             </LeetcodeEditor>
           </value>
         </entry>
