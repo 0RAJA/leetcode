@@ -52,7 +52,7 @@ import "fmt"
 func main() {
 	s := "a"
 	p := "ab*"
-	fmt.Println(isMatch(s, p))
+	fmt.Println(isMatchDP(s, p))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -102,6 +102,46 @@ func isMatch(s string, p string) bool {
 		return false // 连一次匹配都匹配不上就说明失败了。
 	}
 	return dfs(0, 0)
+}
+
+/*
+dp[i][j] == {
+				if dp[i][j] == '*' :
+					dp[i-1][j] || dp[i][j-2] (match(s[i],p[j-1]))
+					dp[i][j-2] (!match(s[i],p[j-1]))
+				else :
+					dp[i-1][j-1] (match(s[i],p[j]))
+					false (!match(s[i],p[j]))
+			}
+*/
+func isMatchDP(s string, p string) bool {
+	dp := make([][]bool, len(s)+1)
+	for i := range dp {
+		dp[i] = make([]bool, len(p)+1)
+	}
+	isOK := func(i, j int) bool {
+		if i == 0 {
+			return false
+		}
+		if s[i-1] == p[j-1] || p[j-1] == '.' {
+			return true
+		}
+		return false
+	}
+	dp[0][0] = true
+	for i := 0; i <= len(s); i++ { //s = "" p = "a***"
+		for j := 1; j <= len(p); j++ {
+			if p[j-1] == '*' {
+				dp[i][j] = dp[i][j] || dp[i][j-2]
+				if isOK(i, j-1) {
+					dp[i][j] = dp[i][j] || dp[i-1][j]
+				}
+			} else if isOK(i, j) {
+				dp[i][j] = dp[i][j] || dp[i-1][j-1]
+			}
+		}
+	}
+	return dp[len(s)][len(p)]
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

@@ -104,4 +104,35 @@ func isMatch2(s string, p string) bool {
 	return dfs(0, 0)
 }
 
+/*
+	dp[i][j] = {
+		if p[j] == '*' :
+			dp[i][j] = dp[i-1][j] || dp[i][j-1]
+		else if p[j] == '？' :
+			dp[i][j] = dp[i-1][j-1]
+		else :
+			dp[i][j] = s[i]==p[j] && dp[i-1][j-1]
+	}
+*/
+func isMatch2DP(s string, p string) bool {
+	dp := make([][]bool, len(s)+1)
+	for i := range dp {
+		dp[i] = make([]bool, len(p)+1)
+	}
+	dp[0][0] = true
+	for i := 0; i <= len(s); i++ {
+		for j := 1; j <= len(p); j++ {
+			switch p[j-1] {
+			case '*':
+				dp[i][j] = dp[i][j-1] || i >= 1 && dp[i-1][j]
+			case '?':
+				dp[i][j] = i >= 1 && dp[i-1][j-1]
+			default:
+				dp[i][j] = i >= 1 && s[i-1] == p[j-1] && dp[i-1][j-1]
+			}
+		}
+	}
+	return dp[len(s)][len(p)]
+}
+
 //leetcode submit region end(Prohibit modification and deletion)
