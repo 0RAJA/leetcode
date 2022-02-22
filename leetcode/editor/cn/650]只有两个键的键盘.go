@@ -90,11 +90,4 @@ func minSteps(n int) (cnt int) {
 	return
 }
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
 //leetcode submit region end(Prohibit modification and deletion)
