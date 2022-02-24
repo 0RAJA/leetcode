@@ -278,6 +278,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/537复数乘法.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/537复数乘法.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com537" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/537复数乘法.go" />
+              <option name="titleSlug" value="complex-number-multiplication" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/540有序数组中的单一元素.go">
           <value>
             <LeetcodeEditor>
