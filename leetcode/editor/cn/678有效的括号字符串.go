@@ -34,8 +34,11 @@
 //
 // 字符串大小将在 [1，100] 范围内。
 //
-// Related Topics 栈 贪心 字符串 动态规划 👍 325 👎 0
+// Related Topics 栈 贪心 字符串 动态规划 👍 453 👎 0
+
 package main
+
+import "container/list"
 
 func main() {
 
@@ -43,37 +46,34 @@ func main() {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 func checkValidString(s string) bool {
-	var left []int
-	var star []int
-	for i := 0; i < len(s); i++ {
+	lstack := list.New()
+	star := list.New()
+	for i := range s {
 		switch s[i] {
-		case '(':
-			left = append(left, i)
 		case '*':
-			star = append(star, i)
+			star.PushBack(i)
+		case '(':
+			lstack.PushBack(i)
 		case ')':
-			if len(left) > 0 {
-				left = left[:len(left)-1]
-			} else if len(star) > 0 {
-				star = star[:len(star)-1]
+			if lstack.Len() > 0 {
+				lstack.Remove(lstack.Back())
+			} else if star.Len() > 0 {
+				star.Remove(star.Back())
 			} else {
 				return false
 			}
 		}
 	}
-	for len(left) > 0 && len(star) > 0 {
-		a := left[len(left)-1]
-		b := star[len(star)-1]
-		left = left[:len(left)-1]
-		star = star[:len(star)-1]
-		if a > b {
+	for lstack.Len() > 0 && star.Len() > 0 {
+		idx1 := lstack.Back().Value.(int)
+		lstack.Remove(lstack.Back())
+		idx2 := star.Back().Value.(int)
+		star.Remove(star.Back())
+		if idx1 > idx2 {
 			return false
 		}
 	}
-	if len(left) > 0 {
-		return false
-	}
-	return true
+	return lstack.Len() == 0
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
