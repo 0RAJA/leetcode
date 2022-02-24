@@ -16,8 +16,8 @@
 # vendor/
 
 # IDE configs folder
-/.idea/
-/.vscode/
+.idea/
+.vscode/
 
 # 临时
 #/leetcode
