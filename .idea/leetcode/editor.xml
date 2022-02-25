@@ -190,6 +190,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/2016增量元素之间的最大差值.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/2016增量元素之间的最大差值.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com2016" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/2016增量元素之间的最大差值.go" />
+              <option name="titleSlug" value="maximum-difference-between-increasing-elements" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/2045到达目的地的第二短时间.go">
           <value>
             <LeetcodeEditor>
