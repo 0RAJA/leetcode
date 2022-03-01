@@ -56,16 +56,18 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
-	s := "AB"
-	numRows := 1
-	fmt.Println(convert(s, numRows))
+	//s := "PAYPALISHIRING"
+	s := "PAYPALISHIRING"
+	numRows := 4
+	fmt.Println(convert2(s, numRows))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func convert(s string, numRows int) (ret string) {
+func convert1(s string, numRows int) (ret string) {
 	num := make([][]byte, numRows+1)
 	for i := 1; i <= numRows; i++ {
 		num[i] = make([]byte, len(s)+1)
@@ -100,6 +102,29 @@ func convert(s string, numRows int) (ret string) {
 		}
 	}
 	return string(bt)
+}
+
+//优化的模拟
+func convert2(s string, numRows int) (ret string) {
+	if numRows == 1 || numRows >= len(s) {
+		return s
+	}
+	sb := &strings.Builder{}
+	nums := make([][]byte, numRows)
+	x, y := 0, 0
+	for i := range s {
+		nums[x] = append(nums[x], s[i])
+		if y%(numRows-1) != 0 || x == numRows-1 {
+			x--
+			y++
+		} else {
+			x++
+		}
+	}
+	for i := range nums {
+		sb.Write(nums[i])
+	}
+	return sb.String()
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
