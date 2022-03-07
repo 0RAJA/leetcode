@@ -46,4 +46,8 @@ func P2426(dp [][]int, n int) (ret int) {
 /*
 6
 54 29 196 21 133 118
+
+dp[1][j] = max(cal(1,k)+dp[k+1][j],dp[1][k-1],cal(k,j))
+j = [2,n]
+k = [2,j]
 */
