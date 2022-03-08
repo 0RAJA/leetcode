@@ -31,21 +31,32 @@
 // 👍 922 👎 0
 package main
 
-import (
-	"math"
-)
+import "math"
 
 func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-//很神奇的思路,回到很早的状态拿一个j*j然后总数+1即可到达当前状态
+/*
+dp[i] 表示 表示最少需要多少个数的平方来表示整数i
+	这些数必然落在[1,sqrt(i)],通过j来枚举这些数则选择此数的总个数为 dp[i-j*j]+1 而dp[i-j*j]属于更小的问题规模，于是构成
+动态规划。
+	转移方程: dp[i] = min(dp[i],dp[i-j*j]+1)
+	i = [1,n]
+	j = [1,sqrt(i)]
+*/
 func numSquares(n int) int {
 	dp := make([]int, n+1)
-	for i := 0; i < len(dp); i++ {
+	min := func(a, b int) int {
+		if a < b {
+			return a
+		}
+		return b
+	}
+	for i := 1; i <= n; i++ {
 		dp[i] = i
-		for j := 1; i-j*j >= 0; j++ {
-			dp[i] = int(math.Min(float64(dp[i]), float64(dp[i-j*j])+1))
+		for j := 1; j <= int(math.Sqrt(float64(i))); j++ {
+			dp[i] = min(dp[i], dp[i-j*j]+1)
 		}
 	}
 	return dp[n]
