@@ -7,11 +7,23 @@
  */
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
-	testMap()
-	testMMM()
+	//testMap()
+	//testMMM()
+	testSearch()
+}
+
+func testSearch() {
+	/*
+		0,1,2,3,4
+	*/
+	nums := []int{1, 3, 4}
+	fmt.Println(sort.SearchInts(nums, 2))
 }
 
 func testMap() {
