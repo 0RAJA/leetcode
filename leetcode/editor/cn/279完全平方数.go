@@ -53,10 +53,15 @@ func numSquares(n int) int {
 		}
 		return b
 	}
-	for i := 1; i <= n; i++ {
+	for i := range dp {
 		dp[i] = i
-		for j := 1; j <= int(math.Sqrt(float64(i))); j++ {
-			dp[i] = min(dp[i], dp[i-j*j]+1)
+	}
+	//相当于一个数组[1,n] 每个数量不限
+	for j := 1; j <= int(math.Sqrt(float64(n))); j++ {
+		v := j * j
+		for i := v; i <= n; i++ {
+			//可以重复用，所以需要正着遍历
+			dp[i] = min(dp[i], dp[i-v]+1)
 		}
 	}
 	return dp[n]

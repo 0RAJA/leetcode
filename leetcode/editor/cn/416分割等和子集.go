@@ -38,6 +38,12 @@ func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
+/*
+	通过遍历所有的数，然后尝试将此数在当前范围内进行使用，直到范围最大时确保所有的数都已经尝试使用过。
+	dp[i] = dp[i] || dp[i-nums[j]]
+	j = [0,n-1]
+	i = [sum/2,j] (i反向进行遍历是确保使用的数据都是上一轮更新的而不是此轮更新的。)
+*/
 func canPartition(nums []int) bool {
 	if len(nums) < 2 {
 		return false

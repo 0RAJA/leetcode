@@ -49,16 +49,23 @@ import (
 )
 
 func main() {
-	amount := 10
-	coins := []int{10}
+	amount := 5
+	coins := []int{1, 2, 5}
 	fmt.Println(change(amount, coins))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
+/*
+完全背包，和279类似
+/*01和完全背包真的很像，主要就是遍历的方向
+排列和组合的区别影响的是物品和空间的遍历顺序（两个for的先后），排列是固定的，组合是可以替换的
+*/
 func change(amount int, coins []int) int {
 	dp := make([]int, amount+1)
 	dp[0] = 1
+	//物品 无限
 	for _, v := range coins {
+		//空间
 		for i := v; i <= amount; i++ {
 			dp[i] += dp[i-v]
 		}

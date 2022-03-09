@@ -49,9 +49,9 @@ import (
 )
 
 func main() {
-	nums := []int{1, 1, 1, 1, 1}
-	target := 3
-	fmt.Println(findTargetSumWays2(nums, target))
+	nums := []int{2, 107, 109, 113, 127, 131, 137, 3, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 47, 53}
+	target := 1000
+	fmt.Println(findTargetSumWays3(nums, target))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
@@ -95,6 +95,34 @@ func findTargetSumWays2(nums []int, target int) int {
 		return dfs(sum+nums[idx], idx+1) + dfs(sum-nums[idx], idx+1)
 	}
 	return dfs(0, 0)
+}
+
+//DP
+/*
+	假设总和为sum,标记为负数的元素和为x,则标记为正数的元素和为(sum-x)
+	则: (sum-x)-x = target
+	即: x = (sum-target)/2 为被标记为负数的元素的和，则此题就转换为0-1背包问题和416很像，只需要确定每个数选或不选的情况
+	dp[i] += dp[i-v] //dp[i]表示和为i的情况数，因为要求全部的方案数，有些像走方格，只需要加起来自己的上一步的方案数即可。
+*/
+func findTargetSumWays3(nums []int, target int) int {
+	sum := 0
+	for _, v := range nums {
+		sum += v
+	}
+	if sum-target < 0 || (sum-target)%2 != 0 {
+		return 0
+	}
+	num := (sum - target) / 2
+	dp := make([]int, num+1)
+	dp[0] = 1
+	//物品
+	for _, v := range nums {
+		//每个只有一个，所以需要反着来，防止使用之前更新的。空间
+		for i := num; i >= v; i-- {
+			dp[i] += dp[i-v]
+		}
+	}
+	return dp[num]
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

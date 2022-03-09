@@ -63,13 +63,15 @@ func coinChange(coins []int, amount int) int {
 	}
 	for i := 1; i <= amount; i++ {
 		dp[i] = 1e4 + 1
-		for _, v := range coins {
-			if v > i {
-				break
-			}
+	}
+	//空间
+	for _, v := range coins {
+		//物品无限
+		for i := v; i <= amount; i++ {
 			dp[i] = min(dp[i], dp[i-v]+1)
 		}
 	}
+
 	if dp[amount] == 1e4+1 {
 		return -1
 	}

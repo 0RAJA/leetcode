@@ -42,42 +42,56 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 //不会
 func main() {
-	strs := []string{"10", "0001", "111001", "1", "0"}
-	fmt.Println(findMaxForm(strs, 5, 3))
+	strs := []string{"10", "0", "1"}
+	fmt.Println(findMaxForm(strs, 1, 1))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-
+/*
+	dp[x][y] = max(dp[x][y],dp[x-a][y-b]+1)
+	a,b = nums[i][0],nums[i][1]
+	i = [0,len(strs)-1]
+	x = [m,1]
+	y = [n,1]
+*/
 func findMaxForm(strs []string, m int, n int) int {
-	sort.Slice(strs, func(i, j int) bool {
-		return len(strs[i]) < len(strs[j])
-	})
-	x1, x2 := 0, 0
-	cnt := 0
-	for i := 0; i < len(strs); i++ {
-		if len(strs[i]) > m-x1+n-x2 {
-			break
+	max := func(a, b int) int {
+		if a > b {
+			return a
 		}
-		t1, t2 := 0, 0
-		for j := 0; j < len(strs[i]); j++ {
-			if strs[i][j] == '0' {
-				t1++
+		return b
+	}
+	nums := make([][2]int, 0, len(strs)) //用来记录每个字符串的0,1个数
+	for _, s := range strs {
+		var num0, num1 int
+		for _, v := range s {
+			if v == '0' {
+				num0++
 			} else {
-				t2++
+				num1++
 			}
 		}
-		if t1+x1 <= m && t2+x2 <= n {
-			x1 += t1
-			x2 += t2
-			cnt++
+		nums = append(nums, [2]int{num0, num1})
+	}
+	dp := make([][]int, m+1)
+	for i := range dp {
+		dp[i] = make([]int, n+1)
+	}
+	for _, v := range nums {
+		a, b := v[0], v[1]
+		for x := m; x >= 0; x-- { //注意反向是为了使用没有更新的数据来进行更新
+			for y := n; y >= 0; y-- {
+				if x >= a && y >= b {
+					dp[x][y] = max(dp[x][y], dp[x-a][y-b]+1)
+				}
+			}
 		}
 	}
-	return cnt
+	return dp[m][n]
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
