@@ -45,38 +45,40 @@
 // 1 <= stones.length <= 30
 // 1 <= stones[i] <= 100
 //
-// Related Topics 动态规划
-// 👍 290 👎 0
+// Related Topics 数组 动态规划 👍 397 👎 0
+
 package main
 
-import "math"
+import "fmt"
 
 func main() {
-
+	fmt.Println(lastStoneWeightII([]int{1, 2}))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-//其实就是找到石头总和加起来最接近一半总和的值,这样相减结果最小.01背包问题
+/*
+取和的一半作为空间大小
+在所有的石头里尝试去放，求最大值
+dp[i] = max(dp[i],dp[i-v]+v)
+*/
 func lastStoneWeightII(stones []int) int {
+	max := func(a, b int) int {
+		if a < b {
+			return b
+		}
+		return a
+	}
 	sum := 0
 	for _, v := range stones {
 		sum += v
 	}
-	maxSize := sum / 2
-	dp := make([][]int, len(stones)+1)
-	for i := 0; i < len(dp); i++ {
-		dp[i] = make([]int, maxSize+1)
-	}
-	for i := 1; i <= len(stones); i++ {
-		x := stones[i-1]
-		for j := 0; j <= maxSize; j++ {
-			dp[i][j] = dp[i-1][j]
-			if j >= x {
-				dp[i][j] = int(math.Max(float64(dp[i][j]), float64(dp[i-1][j-x]+x)))
-			}
+	dp := make([]int, sum/2+1)
+	for _, v := range stones { //物品 有限
+		for i := sum / 2; i >= v; i-- { //空间
+			dp[i] = max(dp[i], dp[i-v]+v)
 		}
 	}
-	return sum - 2*dp[len(stones)][maxSize]
+	return sum - dp[sum/2]*2
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

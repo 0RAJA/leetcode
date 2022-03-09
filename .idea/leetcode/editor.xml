@@ -14,6 +14,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1049最后一块石头的重量 II.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1049最后一块石头的重量 II.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1049" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1049最后一块石头的重量 II.go" />
+              <option name="titleSlug" value="last-stone-weight-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/10正则表达式匹配.go">
           <value>
             <LeetcodeEditor>
@@ -223,6 +234,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/20有效的括号.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/20有效的括号.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com20" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/20有效的括号.go" />
+              <option name="titleSlug" value="valid-parentheses" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/2100适合打劫银行的日子.go">
           <value>
             <LeetcodeEditor>
@@ -253,6 +275,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/213打家劫舍 II.go" />
               <option name="titleSlug" value="house-robber-ii" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/22括号生成.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/22括号生成.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com22" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/22括号生成.go" />
+              <option name="titleSlug" value="generate-parentheses" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -443,6 +476,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/638大礼包.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/638大礼包.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com638" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/638大礼包.go" />
+              <option name="titleSlug" value="shopping-offers" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/639解码方法 II.go">
           <value>
             <LeetcodeEditor>
@@ -561,6 +605,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/838推多米诺.go" />
               <option name="titleSlug" value="push-dominoes" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/879盈利计划.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/879盈利计划.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com879" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/879盈利计划.go" />
+              <option name="titleSlug" value="profitable-schemes" />
             </LeetcodeEditor>
           </value>
         </entry>
