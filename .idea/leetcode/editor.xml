@@ -47,6 +47,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1155掷骰子的N种方法.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1155掷骰子的N种方法.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1155" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1155掷骰子的N种方法.go" />
+              <option name="titleSlug" value="number-of-dice-rolls-with-target-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/115不同的子序列.go">
           <value>
             <LeetcodeEditor>
@@ -187,6 +198,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1984学生分数的最小差值.go" />
               <option name="titleSlug" value="minimum-difference-between-highest-and-lowest-of-k-scores" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1995统计特殊四元组.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1995统计特殊四元组.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1995" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1995统计特殊四元组.go" />
+              <option name="titleSlug" value="count-special-quadruplets" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -473,6 +495,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/576出界的路径数.go" />
               <option name="titleSlug" value="out-of-boundary-paths" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/589N 叉树的前序遍历.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/589N 叉树的前序遍历.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com589" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/589N 叉树的前序遍历.go" />
+              <option name="titleSlug" value="n-ary-tree-preorder-traversal" />
             </LeetcodeEditor>
           </value>
         </entry>

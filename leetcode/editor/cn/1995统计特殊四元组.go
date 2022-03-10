@@ -44,24 +44,34 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	fmt.Println(countQuadruplets([]int{1, 2, 3, 4, 5, 6}))
+	fmt.Println(countQuadruplets([]int{1, 1, 1, 3, 5}))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func countQuadruplets(nums []int) (ans int) {
-	cnt := map[int]int{}
-	for c := len(nums) - 2; c >= 2; c-- {
-		cnt[nums[c+1]]++
-		for a, x := range nums[:c] {
-			for _, y := range nums[a+1 : c] {
-				if sum := x + y + nums[c]; cnt[sum] > 0 {
-					ans += cnt[sum]
-				}
+/*
+	dp[target][cnt] = 数值为target位数cnt
+*/
+func countQuadruplets(nums []int) (ret int) {
+	if len(nums) < 4 {
+		return 0
+	}
+	dp := make([][]int, 110)
+	for i := range dp {
+		dp[i] = make([]int, 4)
+	}
+	dp[0][0] = 1
+	for _, v := range nums {
+		for j := 109; j >= v; j-- {
+			for k := 3; k >= 1; k-- {
+				dp[j][k] += dp[j-v][k-1]
 			}
 		}
+		ret += dp[v][3]
 	}
 	return
 }
