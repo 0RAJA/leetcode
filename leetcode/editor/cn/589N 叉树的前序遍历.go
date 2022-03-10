@@ -52,14 +52,14 @@ func main() {
  * }
  */
 
-type Node struct {
+type P589Node struct {
 	Val      int
-	Children []*Node
+	Children []*P589Node
 }
 
-func preorder(root *Node) (ret []int) {
-	var dfs func(root *Node)
-	dfs = func(root *Node) {
+func preorder(root *P589Node) (ret []int) {
+	var dfs func(root *P589Node)
+	dfs = func(root *P589Node) {
 		if root == nil {
 			return
 		}
