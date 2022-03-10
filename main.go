@@ -15,9 +15,17 @@ import (
 func main() {
 	//testMap()
 	//testMMM()
-	testSearch()
+	//testSearch()
+	testSlice()
 }
-
+func testSlice() {
+	nums := []int{}
+	test := func(nums []int) {
+		nums = append(nums, 1, 2, 3, 4)
+	}
+	test(nums)
+	fmt.Println(nums)
+}
 func testSearch() {
 	/*
 		0,1,2,3,4
