@@ -74,7 +74,7 @@ type TimeMap struct {
 }
 
 /** Initialize your data structure here. */
-func Constructor() TimeMap {
+func Constructor981() TimeMap {
 	return TimeMap{make(map[string][]time)}
 }
 
