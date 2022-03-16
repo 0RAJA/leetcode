@@ -30,7 +30,7 @@ type Solution struct {
 	nums []int
 }
 
-func Constructor(nums []int) Solution {
+func Constructor398(nums []int) Solution {
 	return Solution{nums: nums}
 }
 

@@ -39,7 +39,7 @@ type CQueue struct {
 	stack2 []int
 }
 
-func Constructor() CQueue {
+func Constructor09() CQueue {
 	return CQueue{
 		stack1: []int{},
 		stack2: []int{},

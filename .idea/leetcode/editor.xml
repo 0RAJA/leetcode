@@ -410,6 +410,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/390消除游戏.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/390消除游戏.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com390" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/390消除游戏.go" />
+              <option name="titleSlug" value="elimination-game" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/393UTF-8 编码验证.go">
           <value>
             <LeetcodeEditor>
@@ -440,6 +451,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/416分割等和子集.go" />
               <option name="titleSlug" value="partition-equal-subset-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/432全 O(1) 的数据结构.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/432全 O(1) 的数据结构.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com432" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/432全 O(1) 的数据结构.go" />
+              <option name="titleSlug" value="all-oone-data-structure" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -553,6 +575,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/583两个字符串的删除操作.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/583两个字符串的删除操作.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com583" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/583两个字符串的删除操作.go" />
+              <option name="titleSlug" value="delete-operation-for-two-strings" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/589N 叉树的前序遍历.go">
           <value>
             <LeetcodeEditor>
@@ -649,6 +682,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/7171比特与2比特字符.go" />
               <option name="titleSlug" value="1-bit-and-2-bit-characters" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/740删除并获得点数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/740删除并获得点数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com740" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/740删除并获得点数.go" />
+              <option name="titleSlug" value="delete-and-earn" />
             </LeetcodeEditor>
           </value>
         </entry>

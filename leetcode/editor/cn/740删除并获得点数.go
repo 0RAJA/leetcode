@@ -40,13 +40,29 @@
 // 👍 279 👎 0
 package main
 
+import "fmt"
+
 func main() {
-	nums := []int{4, 10, 10, 8, 1, 4, 10, 9, 7, 6}
-	deleteAndEarn(nums)
+	nums := []int{2, 2, 3, 3, 3, 4}
+	fmt.Println(deleteAndEarn(nums))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
+/*
+其实每次选择一个数就获取那个数所有个体的值的总和，
+转换为打家劫舍问题：
+	dp数组计算每个个体的值得总和，则表示选择dp[i] 则可以获取nums[i]的值，
+	则进行判断
+	dp[i] = max(dp[i-1],dp[i-2]+nums[i])
+	i = [2,len(nums)+2]
+*/
 func deleteAndEarn(nums []int) int {
+	max := func(a, b int) int {
+		if a < b {
+			return b
+		}
+		return a
+	}
 	dp := [20002]int{}
 	maxIndex, minIndex := -1, 20002
 	for _, value := range nums {
@@ -62,12 +78,7 @@ func deleteAndEarn(nums []int) int {
 		return dp[minIndex]
 	}
 	for i := 2; i <= maxIndex+1; i++ {
-		dp[i] = func(a, b int) int {
-			if a > b {
-				return a
-			}
-			return b
-		}(dp[i-1], dp[i-2]+dp[i])
+		dp[i] = max(dp[i-1], dp[i-2]+dp[i])
 	}
 	return dp[maxIndex+1]
 }

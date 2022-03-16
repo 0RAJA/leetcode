@@ -70,7 +70,7 @@ type Solution struct {
 	head *ListNode
 }
 
-func Constructor(head *ListNode) Solution {
+func Constructor382(head *ListNode) Solution {
 	return Solution{head: head}
 }
 

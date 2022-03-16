@@ -44,31 +44,31 @@
 
 package main
 
-func main() {
+import "fmt"
 
+func main() {
+	fmt.Println(lastRemaining(9))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func lastRemaining(n int) int {
-	l, r := 1, n
-	k, cnt, step := 0, n, 1
-	for cnt > 0 {
-		if k%2 == 0 { //从左往右
-			l += step
-			if cnt%2 == 1 { //奇数
-				r -= step
-			}
-		} else { //从右往左
-			r -= step
-			if cnt%2 == 1 {
-				l += step
-			}
+/*
+	每次都会减少一半的数，从左往右每次减去第一个数，从右往左只有是奇数个数才会减少第一个数
+	开始每个数间距为1,然后每删除一轮间距*2
+	每当要删除第一个数就要加上当前第二个数前面删除的数的个数(即和第一个数的间距)
+*/
+func lastRemaining(n int) (ret int) {
+	step := 1
+	ret = 1
+	direct := true
+	for n > 1 {
+		if direct || n%2 != 0 {
+			ret += step
 		}
-		k++       //到下一轮
-		step *= 2 //步长*2
-		cnt /= 2  //数量/2
+		direct = !direct
+		step *= 2
+		n /= 2
 	}
-	return l
+	return
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
