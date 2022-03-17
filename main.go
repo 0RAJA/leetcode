@@ -10,14 +10,25 @@ package main
 import (
 	"fmt"
 	"sort"
+	"strings"
 )
 
 func main() {
 	//testMap()
 	//testMMM()
 	//testSearch()
-	testSlice()
+	//testSlice()
+	testSort()
 }
+
+func testSort() {
+	s := []string{"az", "bz", "cz", "dz", "zzzzz"}
+	sort.Slice(s, func(i, j int) bool {
+		return strings.Compare(s[i], s[j]) < 0
+	})
+	fmt.Println(s)
+}
+
 func testSlice() {
 	nums := []int{}
 	test := func(nums []int) {
