@@ -234,6 +234,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/2043简易银行系统.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/2043简易银行系统.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com2043" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/2043简易银行系统.go" />
+              <option name="titleSlug" value="simple-bank-system" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/2044统计按位或能得到最大值的子集数目.go">
           <value>
             <LeetcodeEditor>
