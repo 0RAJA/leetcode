@@ -42,8 +42,8 @@
 // 1 <= text1.length, text2.length <= 1000
 // text1 和 text2 仅由小写英文字符组成。
 //
-// Related Topics 字符串 动态规划
-// 👍 614 👎 0
+// Related Topics 字符串 动态规划 👍 900 👎 0
+
 package main
 
 func main() {
@@ -51,9 +51,15 @@ func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func longestCommonSubsequence(text1 string, text2 string) (ret int) {
+func longestCommonSubsequence(text1 string, text2 string) int {
+	max := func(a, b int) int {
+		if a < b {
+			return b
+		}
+		return a
+	}
 	dp := make([][]int, len(text1)+1)
-	for i := 0; i <= len(text1); i++ {
+	for i := range dp {
 		dp[i] = make([]int, len(text2)+1)
 	}
 	for i := 1; i <= len(text1); i++ {
@@ -61,12 +67,7 @@ func longestCommonSubsequence(text1 string, text2 string) (ret int) {
 			if text1[i-1] == text2[j-1] {
 				dp[i][j] = dp[i-1][j-1] + 1
 			} else {
-				dp[i][j] = func() int {
-					if dp[i-1][j] > dp[i][j-1] {
-						return dp[i-1][j]
-					}
-					return dp[i][j-1]
-				}()
+				dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 			}
 		}
 	}
