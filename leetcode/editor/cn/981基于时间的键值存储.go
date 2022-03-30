@@ -64,22 +64,22 @@ func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-type time struct {
+type time2 struct {
 	value string
 	tamp  int
 }
 
 type TimeMap struct {
-	Map map[string][]time
+	Map map[string][]time2
 }
 
 /** Initialize your data structure here. */
 func Constructor981() TimeMap {
-	return TimeMap{make(map[string][]time)}
+	return TimeMap{make(map[string][]time2)}
 }
 
 func (this *TimeMap) Set(key string, value string, timestamp int) {
-	this.Map[key] = append(this.Map[key], time{
+	this.Map[key] = append(this.Map[key], time2{
 		value: value,
 		tamp:  timestamp,
 	})

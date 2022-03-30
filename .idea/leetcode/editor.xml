@@ -146,6 +146,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1606找到处理最多请求的服务器.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1606找到处理最多请求的服务器.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1606" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1606找到处理最多请求的服务器.go" />
+              <option name="titleSlug" value="find-servers-that-handled-most-number-of-requests" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/1631最小体力消耗路径.go">
           <value>
             <LeetcodeEditor>
@@ -275,6 +286,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/2016增量元素之间的最大差值.go" />
               <option name="titleSlug" value="maximum-difference-between-increasing-elements" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/2024考试的最大困扰度.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/2024考试的最大困扰度.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com2024" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/2024考试的最大困扰度.go" />
+              <option name="titleSlug" value="maximize-the-confusion-of-an-exam" />
             </LeetcodeEditor>
           </value>
         </entry>
