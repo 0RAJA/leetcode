@@ -1015,6 +1015,61 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 005单词长度的最大乘积.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 005单词长度的最大乘积.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 005" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 005单词长度的最大乘积.go" />
+              <option name="titleSlug" value="aseY1I" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 006排序数组中两个数字之和.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 006排序数组中两个数字之和.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 006" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 006排序数组中两个数字之和.go" />
+              <option name="titleSlug" value="kLl5u1" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 007数组中和为 0 的三个数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 007数组中和为 0 的三个数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 007" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 007数组中和为 0 的三个数.go" />
+              <option name="titleSlug" value="1fGaJU" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 008和大于等于 target 的最短子数组.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 008和大于等于 target 的最短子数组.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 008" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 008和大于等于 target 的最短子数组.go" />
+              <option name="titleSlug" value="2VG8Kg" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 009乘积小于 K 的子数组.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 009乘积小于 K 的子数组.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 009" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 009乘积小于 K 的子数组.go" />
+              <option name="titleSlug" value="ZVAVXX" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 091粉刷房子.go">
           <value>
             <LeetcodeEditor>
