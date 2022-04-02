@@ -839,6 +839,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/728自除数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/728自除数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com728" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/728自除数.go" />
+              <option name="titleSlug" value="self-dividing-numbers" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/740删除并获得点数.go">
           <value>
             <LeetcodeEditor>
@@ -946,6 +957,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/91解码方法.go" />
               <option name="titleSlug" value="decode-ways" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/954二倍数对数组.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/954二倍数对数组.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com954" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/954二倍数对数组.go" />
+              <option name="titleSlug" value="array-of-doubled-pairs" />
             </LeetcodeEditor>
           </value>
         </entry>
