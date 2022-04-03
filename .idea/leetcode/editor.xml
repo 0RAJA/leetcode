@@ -817,6 +817,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/713乘积小于K的子数组.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/713乘积小于K的子数组.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com713" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/713乘积小于K的子数组.go" />
+              <option name="titleSlug" value="subarray-product-less-than-k" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/7171比特与2比特字符.go">
           <value>
             <LeetcodeEditor>
@@ -869,6 +880,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/743网络延迟时间.go" />
               <option name="titleSlug" value="network-delay-time" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/744寻找比目标字母大的最小字母.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/744寻找比目标字母大的最小字母.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com744" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/744寻找比目标字母大的最小字母.go" />
+              <option name="titleSlug" value="find-smallest-letter-greater-than-target" />
             </LeetcodeEditor>
           </value>
         </entry>

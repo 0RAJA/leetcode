@@ -48,6 +48,7 @@ func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
+//其实就是分成一对一对，每一对一个是另一个的两倍,所以小的的次数一定要小于大的的次数
 func canReorderDoubled(arr []int) bool {
 	abs := func(a int) int {
 		if a < 0 {
