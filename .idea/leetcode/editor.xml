@@ -894,6 +894,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/762二进制表示中质数个计算置位.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/762二进制表示中质数个计算置位.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com762" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/762二进制表示中质数个计算置位.go" />
+              <option name="titleSlug" value="prime-number-of-set-bits-in-binary-representation" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/765情侣牵手.go">
           <value>
             <LeetcodeEditor>
@@ -1111,6 +1122,50 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 009乘积小于 K 的子数组.go" />
               <option name="titleSlug" value="ZVAVXX" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 010和为 k 的子数组.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 010和为 k 的子数组.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 010" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 010和为 k 的子数组.go" />
+              <option name="titleSlug" value="QTMn0o" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 0110 和 1 个数相同的子数组.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 0110 和 1 个数相同的子数组.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 011" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 0110 和 1 个数相同的子数组.go" />
+              <option name="titleSlug" value="A1NYOS" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 012左右两边子数组的和相等.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 012左右两边子数组的和相等.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 012" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 012左右两边子数组的和相等.go" />
+              <option name="titleSlug" value="tvdfij" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 013二维子矩阵的和.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 013二维子矩阵的和.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 013" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 013二维子矩阵的和.go" />
+              <option name="titleSlug" value="O4NDxx" />
             </LeetcodeEditor>
           </value>
         </entry>
