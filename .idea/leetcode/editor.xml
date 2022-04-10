@@ -1224,6 +1224,72 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 015字符串中的所有变位词.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 015字符串中的所有变位词.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 015" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 015字符串中的所有变位词.go" />
+              <option name="titleSlug" value="VabMRr" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 016不含重复字符的最长子字符串.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 016不含重复字符的最长子字符串.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 016" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 016不含重复字符的最长子字符串.go" />
+              <option name="titleSlug" value="wtcaE1" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 017含有所有字符的最短字符串.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 017含有所有字符的最短字符串.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 017" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 017含有所有字符的最短字符串.go" />
+              <option name="titleSlug" value="M1oyTv" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 018有效的回文.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 018有效的回文.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 018" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 018有效的回文.go" />
+              <option name="titleSlug" value="XltzEq" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 019最多删除一个字符得到回文.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 019最多删除一个字符得到回文.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 019" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 019最多删除一个字符得到回文.go" />
+              <option name="titleSlug" value="RQku0D" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 020回文子字符串的个数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 020回文子字符串的个数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 020" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 020回文子字符串的个数.go" />
+              <option name="titleSlug" value="a7VOhD" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 091粉刷房子.go">
           <value>
             <LeetcodeEditor>
