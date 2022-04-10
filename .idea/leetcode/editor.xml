@@ -564,6 +564,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/429N 叉树的层序遍历.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/429N 叉树的层序遍历.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com429" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/429N 叉树的层序遍历.go" />
+              <option name="titleSlug" value="n-ary-tree-level-order-traversal" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/432全 O(1) 的数据结构.go">
           <value>
             <LeetcodeEditor>
@@ -949,6 +960,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/796旋转字符串.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/796旋转字符串.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com796" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/796旋转字符串.go" />
+              <option name="titleSlug" value="rotate-string" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/804唯一摩尔斯密码词.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/804唯一摩尔斯密码词.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com804" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/804唯一摩尔斯密码词.go" />
+              <option name="titleSlug" value="unique-morse-code-words" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/838推多米诺.go">
           <value>
             <LeetcodeEditor>
@@ -1177,6 +1210,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 013二维子矩阵的和.go" />
               <option name="titleSlug" value="O4NDxx" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 014字符串中的变位词.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 014字符串中的变位词.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 014" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 014字符串中的变位词.go" />
+              <option name="titleSlug" value="MPnaiL" />
             </LeetcodeEditor>
           </value>
         </entry>
