@@ -498,6 +498,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/357统计各位数字都不同的数字个数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/357统计各位数字都不同的数字个数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com357" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/357统计各位数字都不同的数字个数.go" />
+              <option name="titleSlug" value="count-numbers-with-unique-digits" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/368最大整除子集.go">
           <value>
             <LeetcodeEditor>
@@ -1067,6 +1078,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/{1405}最长快乐字符串.go" />
               <option name="titleSlug" value="longest-happy-string" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer 55 - II平衡二叉树.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer 55 - II平衡二叉树.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer 55 - II" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer 55 - II平衡二叉树.go" />
+              <option name="titleSlug" value="ping-heng-er-cha-shu-lcof" />
             </LeetcodeEditor>
           </value>
         </entry>
