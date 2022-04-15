@@ -531,6 +531,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/385迷你语法分析器.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/385迷你语法分析器.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com385" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/385迷你语法分析器.go" />
+              <option name="titleSlug" value="mini-parser" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/390消除游戏.go">
           <value>
             <LeetcodeEditor>
