@@ -1323,6 +1323,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 037小行星碰撞.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 037小行星碰撞.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 037" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 037小行星碰撞.go" />
+              <option name="titleSlug" value="XagZNi" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 038每日温度.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 038每日温度.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 038" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 038每日温度.go" />
+              <option name="titleSlug" value="iIQa4I" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 091粉刷房子.go">
           <value>
             <LeetcodeEditor>
