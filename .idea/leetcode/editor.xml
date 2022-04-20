@@ -542,6 +542,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/386字典序排数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/386字典序排数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com386" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/386字典序排数.go" />
+              <option name="titleSlug" value="lexicographical-numbers" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/390消除游戏.go">
           <value>
             <LeetcodeEditor>
@@ -1004,6 +1015,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/821字符的最短距离.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/821字符的最短距离.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com821" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/821字符的最短距离.go" />
+              <option name="titleSlug" value="shortest-distance-to-a-character" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/838推多米诺.go">
           <value>
             <LeetcodeEditor>
@@ -1012,6 +1034,28 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/838推多米诺.go" />
               <option name="titleSlug" value="push-dominoes" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/84柱状图中最大的矩形.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/84柱状图中最大的矩形.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com84" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/84柱状图中最大的矩形.go" />
+              <option name="titleSlug" value="largest-rectangle-in-histogram" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/85最大矩形.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/85最大矩形.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com85" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/85最大矩形.go" />
+              <option name="titleSlug" value="maximal-rectangle" />
             </LeetcodeEditor>
           </value>
         </entry>
@@ -1342,6 +1386,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 038每日温度.go" />
               <option name="titleSlug" value="iIQa4I" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 039直方图最大矩形面积.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 039直方图最大矩形面积.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 039" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 039直方图最大矩形面积.go" />
+              <option name="titleSlug" value="0ynMMM" />
             </LeetcodeEditor>
           </value>
         </entry>
