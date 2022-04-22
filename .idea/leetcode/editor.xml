@@ -1037,6 +1037,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/824山羊拉丁文.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/824山羊拉丁文.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com824" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/824山羊拉丁文.go" />
+              <option name="titleSlug" value="goat-latin" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/838推多米诺.go">
           <value>
             <LeetcodeEditor>
