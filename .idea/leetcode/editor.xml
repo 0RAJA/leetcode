@@ -1081,6 +1081,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/868二进制间距.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/868二进制间距.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com868" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/868二进制间距.go" />
+              <option name="titleSlug" value="binary-gap" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/879盈利计划.go">
           <value>
             <LeetcodeEditor>
@@ -1452,6 +1463,61 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 043往完全二叉树添加节点.go" />
               <option name="titleSlug" value="NaqhDT" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 044二叉树每层的最大值.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 044二叉树每层的最大值.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 044" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 044二叉树每层的最大值.go" />
+              <option name="titleSlug" value="hPov7L" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 045二叉树最底层最左边的值.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 045二叉树最底层最左边的值.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 045" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 045二叉树最底层最左边的值.go" />
+              <option name="titleSlug" value="LwUNpT" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 046二叉树的右侧视图.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 046二叉树的右侧视图.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 046" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 046二叉树的右侧视图.go" />
+              <option name="titleSlug" value="WNC0Lk" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 047二叉树剪枝.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 047二叉树剪枝.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 047" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 047二叉树剪枝.go" />
+              <option name="titleSlug" value="pOCWxh" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 049从根节点到叶节点的路径数字之和.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 049从根节点到叶节点的路径数字之和.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 049" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 049从根节点到叶节点的路径数字之和.go" />
+              <option name="titleSlug" value="3Etpl5" />
             </LeetcodeEditor>
           </value>
         </entry>

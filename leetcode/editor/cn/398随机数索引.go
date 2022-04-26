@@ -26,6 +26,11 @@ func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
+
+/*
+	随机数索引。
+*/
+
 type Solution struct {
 	nums []int
 }
