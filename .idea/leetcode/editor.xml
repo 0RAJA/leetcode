@@ -1587,6 +1587,28 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 058日程表.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 058日程表.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 058" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 058日程表.go" />
+              <option name="titleSlug" value="fi9suh" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 061和最小的 k 个数对.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 061和最小的 k 个数对.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 061" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 061和最小的 k 个数对.go" />
+              <option name="titleSlug" value="qn8gGX" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 091粉刷房子.go">
           <value>
             <LeetcodeEditor>

@@ -66,50 +66,43 @@ func main() {
 //leetcode submit region begin(Prohibit modification and deletion)
 type HP [][]int
 
-func (H HP) Len() int {
-	return len(H)
+func (hp *HP) Push(x interface{}) {
+	*hp = append(*hp, x.([]int))
 }
-
-func (H HP) Less(i, j int) bool {
-	return H[i][0] < H[j][0]
+func (hp *HP) Pop() interface{} {
+	x := (*hp)[len(*hp)-1]
+	*hp = (*hp)[:len(*hp)-1]
+	return x
 }
-
-func (H HP) Swap(i, j int) {
-	H[i], H[j] = H[j], H[i]
+func (hp *HP) Len() int {
+	return len(*hp)
 }
-
-func (H *HP) Push(x interface{}) {
-	*H = append(*H, x.([]int))
+func (hp *HP) Less(i, j int) bool {
+	return (*hp)[i][0] < (*hp)[j][0]
 }
-
-func (H *HP) Pop() interface{} {
-	p := (*H)[len(*H)-1]
-	*H = (*H)[:len(*H)-1]
-	return p
+func (hp *HP) Swap(i, j int) {
+	(*hp)[i], (*hp)[j] = (*hp)[j], (*hp)[i]
 }
-
 func kSmallestPairs(nums1 []int, nums2 []int, k int) (ret [][]int) {
 	hp := new(HP)
-	n1, n2 := len(nums1), len(nums2)
-	flag := n1 > n2
-	if flag {
-		n1, n2, nums1, nums2 = n2, n1, nums2, nums1
+	swap := false
+	if len(nums1) < len(nums2) {
+		nums1, nums2 = nums2, nums1
+		swap = true
 	}
-	if n1 > k {
-		n1 = k
-	}
-	for i := 0; i < n1; i++ {
+	for i := 0; i < k && i < len(nums1); i++ {
 		heap.Push(hp, []int{nums1[i] + nums2[0], i, 0})
 	}
-	for len(ret) < k && hp.Len() > 0 {
+	ret = make([][]int, 0, k)
+	for i := 0; i < k && hp.Len() > 0; i++ {
 		p := heap.Pop(hp).([]int)
 		a, b := p[1], p[2]
-		if flag {
+		if swap {
 			ret = append(ret, []int{nums2[b], nums1[a]})
 		} else {
 			ret = append(ret, []int{nums1[a], nums2[b]})
 		}
-		if b+1 < n2 {
+		if b+1 < len(nums2) {
 			heap.Push(hp, []int{nums1[a] + nums2[b+1], a, b + 1})
 		}
 	}

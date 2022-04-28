@@ -45,45 +45,62 @@
 package main
 
 import (
+	"container/heap"
 	"fmt"
-	"sort"
 	"strings"
 )
 
 func main() {
-	words := []string{"the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"}
-	fmt.Println(topKFrequent(words, 4))
+	words := []string{"i", "love", "leetcode", "i", "love", "coding"}
+	fmt.Println(topKFrequent(words, 2))
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-type myType []string
-
-var map1 map[string]int
-
-func topKFrequent(words []string, k int) []string {
-	map1 = make(map[string]int)
-	for _, v := range words {
-		map1[v]++
-	}
-	key := make(myType, 0)
-	for k := range map1 {
-		key = append(key, k)
-	}
-	sort.Sort(key)
-	return key[:k]
+type myType struct {
+	strs []string
+	cnts map[string]int
 }
+
+func topKFrequent(words []string, k int) (ret []string) {
+	m := &myType{cnts: make(map[string]int), strs: make([]string, 0, len(words))}
+	for i := range words {
+		m.cnts[words[i]]++
+	}
+	for k := range m.cnts {
+		heap.Push(m, k)
+	}
+	ret = make([]string, 0, k)
+	for i := 0; i < k; i++ {
+		ret = append(ret, m.strs[0])
+		heap.Remove(m, 0)
+	}
+	return
+}
+
 func (m myType) Len() int {
-	return len(m)
+	return len(m.strs)
 }
+
 func (m myType) Less(i, j int) bool {
-	if map1[m[i]] != map1[m[j]] {
-		return map1[m[i]] > map1[m[j]]
+	if m.cnts[m.strs[i]] != m.cnts[m.strs[j]] {
+		return m.cnts[m.strs[i]] > m.cnts[m.strs[j]]
 	} else {
-		return strings.Compare(m[i], m[j]) < 0
+		return strings.Compare(m.strs[i], m.strs[j]) < 0
 	}
 }
+
 func (m myType) Swap(i, j int) {
-	m[i], m[j] = m[j], m[i]
+	m.strs[i], m.strs[j] = m.strs[j], m.strs[i]
+}
+
+func (m *myType) Push(v interface{}) {
+	m.strs = append(m.strs, v.(string))
+}
+
+func (m *myType) Pop() interface{} {
+	x := m.strs[len(m.strs)-1]
+	m.strs = m.strs[:len(m.strs)-1]
+	return x
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
