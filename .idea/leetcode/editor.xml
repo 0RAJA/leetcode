@@ -223,6 +223,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1823找出游戏的获胜者.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1823找出游戏的获胜者.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com1823" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1823找出游戏的获胜者.go" />
+              <option name="titleSlug" value="find-the-winner-of-the-circular-game" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/1928规定时间内到达终点的最小花费.go">
           <value>
             <LeetcodeEditor>
@@ -905,13 +916,24 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/713乘积小于 K 的子数组.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/713乘积小于 K 的子数组.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com713" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/713乘积小于 K 的子数组.go" />
+              <option name="titleSlug" value="subarray-product-less-than-k" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/713乘积小于K的子数组.go">
           <value>
             <LeetcodeEditor>
-              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/713乘积小于K的子数组.md" />
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/713乘积小于 K 的子数组.md" />
               <option name="frontendQuestionId" value="leetcode-cn.com713" />
               <option name="host" value="leetcode-cn.com" />
-              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/713乘积小于K的子数组.go" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/713乘积小于 K 的子数组.go" />
               <option name="titleSlug" value="subarray-product-less-than-k" />
             </LeetcodeEditor>
           </value>
@@ -1144,6 +1166,17 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/883三维形体投影面积.go" />
               <option name="titleSlug" value="projection-area-of-3d-shapes" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/908最小差值 I.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/908最小差值 I.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com908" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/908最小差值 I.go" />
+              <option name="titleSlug" value="smallest-range-i" />
             </LeetcodeEditor>
           </value>
         </entry>
