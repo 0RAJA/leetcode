@@ -443,6 +443,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/24两两交换链表中的节点.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/24两两交换链表中的节点.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com24" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/24两两交换链表中的节点.go" />
+              <option name="titleSlug" value="swap-nodes-in-pairs" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/258各位相加.go">
           <value>
             <LeetcodeEditor>
@@ -1202,6 +1213,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/933最近的请求次数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/933最近的请求次数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com933" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/933最近的请求次数.go" />
+              <option name="titleSlug" value="number-of-recent-calls" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/954二倍数对数组.go">
           <value>
             <LeetcodeEditor>
@@ -1716,6 +1738,28 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 065最短的单词编码.go" />
               <option name="titleSlug" value="iSwD2y" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 066单词之和.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 066单词之和.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 066" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 066单词之和.go" />
+              <option name="titleSlug" value="z1R5dt" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 067最大的异或.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 067最大的异或.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 067" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 067最大的异或.go" />
+              <option name="titleSlug" value="ms70jA" />
             </LeetcodeEditor>
           </value>
         </entry>
