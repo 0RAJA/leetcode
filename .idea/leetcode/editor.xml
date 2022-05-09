@@ -674,6 +674,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/442数组中重复的数据.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/442数组中重复的数据.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com442" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/442数组中重复的数据.go" />
+              <option name="titleSlug" value="find-all-duplicates-in-an-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/44通配符匹配.go">
           <value>
             <LeetcodeEditor>
@@ -1224,6 +1235,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/942增减字符串匹配.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/942增减字符串匹配.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com942" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/942增减字符串匹配.go" />
+              <option name="titleSlug" value="di-string-match" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/954二倍数对数组.go">
           <value>
             <LeetcodeEditor>
@@ -1760,6 +1782,83 @@
               <option name="host" value="leetcode-cn.com" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 067最大的异或.go" />
               <option name="titleSlug" value="ms70jA" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 068查找插入位置.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 068查找插入位置.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 068" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 068查找插入位置.go" />
+              <option name="titleSlug" value="N6YdxV" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 069山峰数组的顶部.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 069山峰数组的顶部.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 069" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 069山峰数组的顶部.go" />
+              <option name="titleSlug" value="B1IidL" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 070排序数组中只出现一次的数字.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 070排序数组中只出现一次的数字.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 070" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 070排序数组中只出现一次的数字.go" />
+              <option name="titleSlug" value="skFtm2" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 071按权重生成随机数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 071按权重生成随机数.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 071" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 071按权重生成随机数.go" />
+              <option name="titleSlug" value="cuyjEf" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 072求平方根.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 072求平方根.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 072" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 072求平方根.go" />
+              <option name="titleSlug" value="jJ0w9p" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 073狒狒吃香蕉.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 073狒狒吃香蕉.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 073" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 073狒狒吃香蕉.go" />
+              <option name="titleSlug" value="nZZqjQ" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 074合并区间.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 074合并区间.md" />
+              <option name="frontendQuestionId" value="leetcode-cn.com剑指 Offer II 074" />
+              <option name="host" value="leetcode-cn.com" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 074合并区间.go" />
+              <option name="titleSlug" value="SsGoHC" />
             </LeetcodeEditor>
           </value>
         </entry>

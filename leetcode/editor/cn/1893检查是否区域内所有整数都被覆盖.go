@@ -53,14 +53,13 @@ func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-
 func isCovered(ranges [][]int, left int, right int) bool {
+	max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
 	sort.Slice(ranges, func(i, j int) bool {
 		return ranges[i][0] < ranges[j][0]
 	})

@@ -47,17 +47,17 @@ func main() {
 }
 
 //leetcode submit region begin(Prohibit modification and deletion)
-func isOK(nums []string, index int) int {
-	if index >= len(nums) || index == -1 {
-		return -1
-	}
-	if nums[index] == "#" {
-		return index + 1
-	}
-	return isOK(nums, isOK(nums, index+1))
-}
-
 func isValidSerialization(preorder string) bool {
+	var isOK func(nums []string, index int) int
+	isOK = func(nums []string, index int) int {
+		if index >= len(nums) || index == -1 {
+			return -1
+		}
+		if nums[index] == "#" {
+			return index + 1
+		}
+		return isOK(nums, isOK(nums, index+1))
+	}
 	nums := strings.Split(preorder, ",")
 	return isOK(nums, 0) == len(nums)
 }
