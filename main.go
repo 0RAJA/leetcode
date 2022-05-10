@@ -14,10 +14,10 @@ import (
 )
 
 func main() {
-	//testMap()
-	//testMMM()
-	//testSearch()
-	//testSlice()
+	// testMap()
+	// testMMM()
+	// testSearch()
+	// testSlice()
 	testSort()
 }
 
@@ -30,7 +30,7 @@ func testSort() {
 }
 
 func testSlice() {
-	nums := []int{}
+	var nums []int
 	test := func(nums []int) {
 		nums = append(nums, 1, 2, 3, 4)
 	}
