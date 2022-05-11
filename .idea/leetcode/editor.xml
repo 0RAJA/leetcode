@@ -685,6 +685,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/449序列化和反序列化二叉搜索树.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/449序列化和反序列化二叉搜索树.md" />
+              <option name="frontendQuestionId" value="leetcode.cn449" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/449序列化和反序列化二叉搜索树.go" />
+              <option name="titleSlug" value="serialize-and-deserialize-bst" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/44通配符匹配.go">
           <value>
             <LeetcodeEditor>
@@ -1892,6 +1903,39 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 077链表排序.go" />
               <option name="titleSlug" value="7WHec2" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 078合并排序链表.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 078合并排序链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn剑指 Offer II 078" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 078合并排序链表.go" />
+              <option name="titleSlug" value="vvXgSW" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 079所有子集.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 079所有子集.md" />
+              <option name="frontendQuestionId" value="leetcode.cn剑指 Offer II 079" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 079所有子集.go" />
+              <option name="titleSlug" value="TVdhkn" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 080含有 k 个元素的组合.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/剑指 Offer II 080含有 k 个元素的组合.md" />
+              <option name="frontendQuestionId" value="leetcode.cn剑指 Offer II 080" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/剑指 Offer II 080含有 k 个元素的组合.go" />
+              <option name="titleSlug" value="uUsW3B" />
             </LeetcodeEditor>
           </value>
         </entry>
