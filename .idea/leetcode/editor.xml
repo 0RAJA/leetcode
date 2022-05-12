@@ -1257,6 +1257,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/944删列造序.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/944删列造序.md" />
+              <option name="frontendQuestionId" value="leetcode.cn944" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/944删列造序.go" />
+              <option name="titleSlug" value="delete-columns-to-make-sorted" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/954二倍数对数组.go">
           <value>
             <LeetcodeEditor>
