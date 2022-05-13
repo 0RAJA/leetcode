@@ -1961,6 +1961,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/面试题 01.05一次编辑.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/面试题 01.05一次编辑.md" />
+              <option name="frontendQuestionId" value="leetcode.cn面试题 01.05" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/面试题 01.05一次编辑.go" />
+              <option name="titleSlug" value="one-away-lcci" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/leetcode/editor/cn/1405]最长快乐字符串.go">
           <value>
             <LeetcodeEditor>
