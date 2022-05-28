@@ -54,9 +54,10 @@ package main
 import (
 	"container/heap"
 	"fmt"
-	"github.com/0RAJA/Rutils/struct/set/unionSet"
 	"math"
 	"sort"
+
+	"github.com/0RAJA/Rutils/struct/set/unionSet"
 )
 
 func main() {

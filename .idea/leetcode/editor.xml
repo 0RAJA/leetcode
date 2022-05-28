@@ -14,6 +14,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/1021删除最外层的括号.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/1021删除最外层的括号.md" />
+              <option name="frontendQuestionId" value="leetcode.cn1021" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/1021删除最外层的括号.go" />
+              <option name="titleSlug" value="remove-outermost-parentheses" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/1049最后一块石头的重量 II.go">
           <value>
             <LeetcodeEditor>
@@ -671,6 +682,17 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/432全 O(1) 的数据结构.go" />
               <option name="titleSlug" value="all-oone-data-structure" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/436寻找右区间.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/436寻找右区间.md" />
+              <option name="frontendQuestionId" value="leetcode.cn436" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/436寻找右区间.go" />
+              <option name="titleSlug" value="find-right-interval" />
             </LeetcodeEditor>
           </value>
         </entry>
