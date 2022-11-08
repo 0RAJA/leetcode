@@ -1,0 +1,14 @@
+func maxProfit(prices []int) (cnt int) {
+	var prev, next int
+	for ; next < len(prices); next++ {
+		if prices[next]-prices[prev] > cnt {
+			cnt = prices[next] - prices[prev]
+		}
+		if prices[prev] > prices[next] {
+			prev = next
+		}
+	}
+	return
+}
+//runtime:116 ms
+//memory:8.1 MB

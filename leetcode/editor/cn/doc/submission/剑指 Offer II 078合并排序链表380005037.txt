@@ -1,0 +1,49 @@
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+
+type PH078 struct {
+	list []*ListNode
+}
+
+func (p *PH078) Len() int { return len(p.list) }
+
+func (p *PH078) Less(i, j int) bool { return p.list[i].Val < p.list[j].Val }
+
+func (p *PH078) Swap(i, j int) { p.list[i], p.list[j] = p.list[j], p.list[i] }
+
+func (p *PH078) Push(x interface{}) { p.list = append(p.list, x.(*ListNode)) }
+
+func (p *PH078) Pop() interface{} {
+	x := p.list[len(p.list)-1]
+	p.list = p.list[:len(p.list)-1]
+	return x
+}
+
+func mergeKLists(lists []*ListNode) *ListNode {
+	ph := &PH078{list: make([]*ListNode, 0, len(lists))}
+	for i := range lists {
+		if lists[i] != nil {
+			heap.Push(ph, lists[i])
+		}
+	}
+	head := new(ListNode)
+	tail := head
+	for ph.Len() > 0 {
+		p := heap.Remove(ph, 0).(*ListNode) // 删除一个，写入下一个
+		if p.Next != nil {
+			heap.Push(ph, p.Next)
+		}
+		tail.Next = p
+		tail = p
+	}
+	return head.Next
+}
+
+
+//runtime:8 ms
+//memory:5.2 MB

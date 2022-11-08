@@ -92,19 +92,20 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	ph := &PH078{list: make([]*ListNode, 0, len(lists))}
 	for i := range lists {
 		if lists[i] != nil {
-			heap.Push(ph, lists[i])
+			ph.Push(lists[i])
 		}
 	}
-	head := new(ListNode)
+	head := &ListNode{}
 	tail := head
 	for ph.Len() > 0 {
-		p := heap.Remove(ph, 0).(*ListNode)
+		p := heap.Pop(ph).(*ListNode)
 		if p.Next != nil {
 			heap.Push(ph, p.Next)
 		}
 		tail.Next = p
 		tail = p
 	}
+	tail.Next = nil
 	return head.Next
 }
 

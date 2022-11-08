@@ -54,21 +54,21 @@ func (h *Hp076) Push(x interface{}) {
 }
 
 func (h *Hp076) Pop() interface{} {
-	x := h.IntSlice[len(h.IntSlice)-1]
+	v := h.IntSlice[len(h.IntSlice)-1]
 	h.IntSlice = h.IntSlice[:len(h.IntSlice)-1]
-	return x
+	return v
 }
 
 func findKthLargest(nums []int, k int) int {
-	hp := &Hp076{make([]int, 0, k+1)}
+	h := &Hp076{IntSlice: make([]int, 0, k+1)}
 	for i := 0; i < k; i++ {
-		heap.Push(hp, nums[i])
+		heap.Push(h, nums[i])
 	}
 	for i := k; i < len(nums); i++ {
-		heap.Push(hp, nums[i])
-		heap.Remove(hp, 0)
+		heap.Push(h, nums[i])
+		heap.Remove(h, 0)
 	}
-	return heap.Remove(hp, 0).(int)
+	return heap.Remove(h, 0).(int)
 }
 
 // leetcode submit region end(Prohibit modification and deletion)
