@@ -1,0 +1,25 @@
+func buildTree(preorder []int, inorder []int) *TreeNode {
+	var dfs func(preorder, inorder []int) *TreeNode
+	dfs = func(preorder, inorder []int) (ret *TreeNode) {
+		if len(preorder) == 0 {
+			return nil
+		}
+		k := preorder[0]
+		ret = &TreeNode{Val:k} //以前序遍历的第一个对象为根,通过中序遍历区分左右孩子
+		index := 0
+		for inorder[index] != k { //找到中序遍历中根的位置,分成两侧
+			index++
+		}
+		if index != 0 {
+			ret.Left = dfs(preorder[1:index+1], inorder[:index]) //左孩子
+		}
+		if index != len(inorder)-1 {
+			ret.Right = dfs(preorder[index+1:], inorder[index+1:]) //右孩子
+		}
+		return
+	}
+	return dfs(preorder, inorder)
+}
+
+//runtime:4 ms
+//memory:4.2 MB

@@ -28,8 +28,13 @@
 
 package main
 
-func main() {
+import (
+	"fmt"
+	"math"
+)
 
+func main() {
+	fmt.Println(math.MinInt32)
 }
 
 // leetcode submit region begin(Prohibit modification and deletion)
