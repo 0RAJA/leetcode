@@ -50,14 +50,15 @@ func minPathSum(grid [][]int) int {
 	// 设 dp 为大小 m×n 矩阵，其中 dp[i][j] 的值代表直到走到 (i,j) 的最小路径和。
 	for i := 0; i < len(grid); i++ {
 		for j := 0; j < len(grid[0]); j++ {
-			if i == 0 && j == 0 { // 都是边界
+			switch {
+			case i == 0 && j == 0:
 				continue
-			} else if i == 0 { // 有左边值
-				grid[i][j] = grid[i][j-1] + grid[i][j]
-			} else if j == 0 { // 有上边值
-				grid[i][j] = grid[i-1][j] + grid[i][j]
-			} else { // 选择两个中的最小值
-				grid[i][j] = min(grid[i-1][j], grid[i][j-1]) + grid[i][j]
+			case i == 0:
+				grid[i][j] += grid[i][j-1]
+			case j == 0:
+				grid[i][j] += grid[i-1][j]
+			default:
+				grid[i][j] += min(grid[i-1][j], grid[i][j-1])
 			}
 		}
 	}

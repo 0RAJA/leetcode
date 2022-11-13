@@ -38,6 +38,7 @@ func main() {
 只要保证l<=r即可
 l == r 只能放左括号
 l < r 既可以放左括号，也可以放右括号
+左括号放完就可以放右括号
 */
 func generateParenthesis(n int) (ret []string) {
 	var dfs func(s string, l, r int) // true ( false )
