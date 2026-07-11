@@ -4,7 +4,9 @@
 
 ## 目录约定
 
-- `leetcode/editor/cn/`：GoLand LeetCode Editor 插件生成的题解、题面缓存和题库索引。
+- `leetcode/editor/cn/pXXXX/`：GoLand LeetCode Editor 插件按标准模板生成的新题解目录。
+- `leetcode/editor/cn/_legacy/`：历史存量题解隔离区，提交到 Git，但被 Go 工具链忽略。
+- `leetcode/_legacy/`：更早期的根目录散落练习隔离区，提交到 Git，但被 Go 工具链忽略。
 - `leetcode/editor/cn/doc/content/`：题面 Markdown 缓存；公开 GitHub 仓库默认不提交。
 - `leetcode/editor/cn/doc/note/`：本地笔记；有内容时适合提交。
 - `2026/`：按刷题路线重新整理的题解目录。
@@ -44,16 +46,23 @@ GoLand LeetCode 插件的新题生成模板见 `docs/leetcode-editor-template.md
 
 ## Legacy 策略
 
-`leetcode/editor/cn` 根目录下的历史散落题解属于 legacy 存量。legacy 文件不作为新增题模板，也不作为日常 `go test ./...` 的完成标准。需要复习、调试或补测试的旧题，应迁移到 `leetcode/editor/cn/pXXXX/` 后再维护。
+历史散落题解已统一移动到 `_legacy` 目录：
+
+- `_legacy/root/`：原 `leetcode/editor/cn/` 根目录下的散落 `.go` / `*_test.go`。
+- `_legacy/<old-dir>/`：原有非标准旧目录，例如 `106/`、`212/`、`subsetsWithDup/`。
+- `leetcode/_legacy/root/`：更早期的 `leetcode/` 根目录散落 `.go` 文件。
+- `_legacy/` 目录名前缀为 `_`，Go 的 `./...` 包发现会跳过它，避免旧文件继续造成命名冲突和编译失败。
+
+legacy 文件只作为历史记录保留。需要复习、调试或补测试的旧题，应迁移到 `leetcode/editor/cn/pXXXX/` 后再维护。
 
 常用验证命令：
 
 ```bash
 go test ./2026/...
-go test ./leetcode/editor/cn/pXXXX
+go test ./leetcode/editor/cn/...
 ```
 
-在 legacy 完成隔离前，不要求 `go test ./...` 全量通过。
+提交前先跑目标目录测试，再视变更范围跑 `go test ./...`。
 
 ## 验证策略
 
@@ -61,7 +70,11 @@ go test ./leetcode/editor/cn/pXXXX
 
 ```bash
 go test ./2026/...
-go test ./leetcode/editor/cn/pXXXX
+go test ./leetcode/editor/cn/...
 ```
 
-当 legacy 散落文件完成隔离或迁移后，再把 `go test ./...` 作为提交前必跑命令。
+如果改动跨越仓库根目录或非 LeetCode Editor 目录，再追加：
+
+```bash
+go test ./...
+```

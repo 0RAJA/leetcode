@@ -55,4 +55,5 @@ leetcode/editor/cn/p0001/
 
 - 已生成的旧文件不会因模板修改自动迁移。
 - 后续迁移旧题时，优先移动到 `pNNNN/solution.go`，再补 `solution_test.go`。
+- 历史存量统一保存在 `leetcode/editor/cn/_legacy/`，不要在 `_legacy/` 内继续新增题解。
 - 迁移提交应与插件模板提交分开，便于回滚和 review。
