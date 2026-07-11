@@ -37,3 +37,7 @@ git rm -r --cached .idea
 ```bash
 git rm -r --cached leetcode/editor/cn/doc/content leetcode/editor/cn/doc/solution leetcode/editor/cn/doc/submission
 ```
+
+## 插件模板
+
+GoLand LeetCode 插件的新题生成模板见 `docs/leetcode-editor-template.md`。该模板约定新 Go 题解生成到独立目录和独立 package，插件登录态配置仍保留在本机用户级目录，不提交到 Git。
