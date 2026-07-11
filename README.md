@@ -42,7 +42,7 @@ git rm -r --cached leetcode/editor/cn/doc/content leetcode/editor/cn/doc/solutio
 
 ## 插件模板
 
-GoLand LeetCode 插件的新题生成模板见 `docs/leetcode-editor-template.md`。该模板约定新 Go 题解生成到独立目录和独立 package，插件登录态配置仍保留在本机用户级目录，不提交到 Git。
+GoLand LeetCode 插件的新题生成模板见 `docs/leetcode-editor-template.md`，可复用配置清单见 `docs/leetcode-editor-config.example.md`。这些文档只记录非密钥配置；插件登录态配置仍保留在本机用户级目录，不提交到 Git。
 
 ## Legacy 策略
 

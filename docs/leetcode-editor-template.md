@@ -7,8 +7,11 @@
 GoLand/JetBrains 插件的真实配置在用户级目录，不提交到 Git：
 
 - `~/Library/Application Support/JetBrains/GoLand2025.2/options/leetcode-config.xml`
+- `~/Library/Application Support/JetBrains/GoLand2026.1/options/leetcode-config.xml`
 
 该文件可能包含 `loginName`、`userCookie`、`LEETCODE_SESSION`、`csrftoken` 等登录态，不能提交。
+
+可提交、可复用的无密钥配置清单见 `docs/leetcode-editor-config.example.md`。
 
 ## 推荐配置
 
