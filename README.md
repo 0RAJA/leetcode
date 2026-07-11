@@ -41,3 +41,16 @@ git rm -r --cached leetcode/editor/cn/doc/content leetcode/editor/cn/doc/solutio
 ## 插件模板
 
 GoLand LeetCode 插件的新题生成模板见 `docs/leetcode-editor-template.md`。该模板约定新 Go 题解生成到独立目录和独立 package，插件登录态配置仍保留在本机用户级目录，不提交到 Git。
+
+## Legacy 策略
+
+`leetcode/editor/cn` 根目录下的历史散落题解属于 legacy 存量。legacy 文件不作为新增题模板，也不作为日常 `go test ./...` 的完成标准。需要复习、调试或补测试的旧题，应迁移到 `leetcode/editor/cn/pXXXX/` 后再维护。
+
+常用验证命令：
+
+```bash
+go test ./2026/...
+go test ./leetcode/editor/cn/pXXXX
+```
+
+在 legacy 完成隔离前，不要求 `go test ./...` 全量通过。
