@@ -54,3 +54,14 @@ go test ./leetcode/editor/cn/pXXXX
 ```
 
 在 legacy 完成隔离前，不要求 `go test ./...` 全量通过。
+
+## 验证策略
+
+当前阶段以目标 package 测试为准：
+
+```bash
+go test ./2026/...
+go test ./leetcode/editor/cn/pXXXX
+```
+
+当 legacy 散落文件完成隔离或迁移后，再把 `go test ./...` 作为提交前必跑命令。
