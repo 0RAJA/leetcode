@@ -15,29 +15,29 @@ GoLand/JetBrains 插件的真实配置在用户级目录，不提交到 Git：
 在插件设置中使用以下非密钥配置：
 
 - `Code Type`: `Go`
-- `File Path`: 当前仓库根目录
+- `File Path`: 当前仓库根目录，例如 `/Users/raja/Desktop/space/code/study/algorithm/leetcode`
 - `Custom Template`: enabled
-- `File Name`:
+- `CodeFileName`:
 
 ```velocity
-leetcode/editor/cn/p${vt.leftPadZeros($q.questionId, 4)}/solution
+p$!velocityTool.leftPadZeros(${question.questionId},4)/solution
 ```
 
-- `Code Template`:
+- `CodeTemplate`:
 
 ```velocity
-${q.content}
+${question.content}
 
-package p${vt.leftPadZeros($q.questionId, 4)}
+package p$!velocityTool.leftPadZeros(${question.questionId},4)
 
-${q.code}
+${question.code}
 ```
 
-插件会根据语言自动追加 `.go` 后缀，因此 `File Name` 不写 `.go`。
+插件会在 `File Path` 后自动拼接 `leetcode/editor/cn/`，并根据语言自动追加 `.go` 后缀。因此 `CodeFileName` 只写 `pXXXX/solution`，不要写 `leetcode/editor/cn/pXXXX/solution.go`。
 
 ## 设计依据
 
-- 使用 `q.questionId`：它是 LeetCode 内部数字 ID，能覆盖普通题、LCR、剑指 Offer 等非纯数字前端题号。
+- 使用 `question.questionId`：它是 LeetCode 内部数字 ID，能覆盖普通题、LCR、剑指 Offer 等非纯数字前端题号。
 - 使用 `p0001` 形式：Go package 必须是合法标识符，不能直接使用 `[1]两数之和`、`LCR 006`、中文题名或带空格路径。
 - 每题独立目录：`go test ./leetcode/editor/cn/p0001` 只编译该题，避免 `TreeNode`、`ListNode`、`Constructor`、`main` 等符号冲突。
 
