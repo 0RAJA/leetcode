@@ -28,6 +28,37 @@
 - Go 测试/覆盖率/二进制产物。
 - 插件生成的题面缓存：`leetcode/editor/cn/doc/content/`、`doc/solution/`、`doc/submission/`。
 
+## 提交规范
+
+提交信息采用 Conventional Commits 风格：
+
+```text
+<type>: <summary>
+
+- <problem-id> <problem-title>
+- <problem-id> <problem-title>
+```
+
+常用 `type`：
+
+- `feat`：新增题解、测试或刷题记录。
+- `fix`：修正已有题解、测试或目录命名问题。
+- `docs`：只更新文档、笔记、模板说明。
+- `refactor`：目录迁移、包拆分、结构调整，不改变题解行为。
+- `chore`：仓库配置、忽略规则、非题解维护。
+
+每日题解提交建议使用 `feat`，并在正文列出当天完成的题目，例如：
+
+```text
+feat: add daily leetcode solutions
+
+- 435 无重叠区间
+- 452 用最少数量的箭引爆气球
+- 763 划分字母区间
+```
+
+如果同一天同时包含文档或结构调整，优先拆成独立提交；不方便拆分时，在正文继续列出非题解变更。
+
 如果历史上已经提交过 IDE 文件，单靠 `.gitignore` 不会取消跟踪，需要执行：
 
 ```bash

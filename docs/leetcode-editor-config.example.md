@@ -55,6 +55,8 @@ leetcode/editor/cn/p$!velocityTool.leftPadZeros(${question.questionId},4)/soluti
 
 这样会导致路径重复或插件继续落到旧格式。
 
+注意：这里使用插件内部 `questionId`，优先保证 GoLand LeetCode 插件点击题目、打开文件、提交记录和本地文件路径一致。commit 正文中再使用 LeetCode 页面展示题号记录当天完成的题。
+
 ## 新题维护流程
 
 1. 插件生成 `leetcode/editor/cn/pXXXX/solution.go`。

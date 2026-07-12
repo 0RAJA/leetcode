@@ -40,7 +40,8 @@ ${question.code}
 
 ## 设计依据
 
-- 使用 `question.questionId`：它是 LeetCode 内部数字 ID，能覆盖普通题、LCR、剑指 Offer 等非纯数字前端题号。
+- 使用 `question.questionId`：保持本地路径与插件点击、提交记录、题目缓存映射一致。
+- 注意插件的 `questionId` 可能是 LeetCode 内部 ID，不一定等于页面展示题号；例如页面题号 763 可能生成到 `p0768`。Git commit 正文仍按页面展示题号记录当天完成的题。
 - 使用 `p0001` 形式：Go package 必须是合法标识符，不能直接使用 `[1]两数之和`、`LCR 006`、中文题名或带空格路径。
 - 每题独立目录：`go test ./leetcode/editor/cn/p0001` 只编译该题，避免 `TreeNode`、`ListNode`、`Constructor`、`main` 等符号冲突。
 
