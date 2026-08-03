@@ -276,3 +276,13 @@
    // }
 
    ```
+6. 238 除了自身以外数组的乘积
+   // 前缀乘积 & 后缀乘积
+7. 155 最小栈
+   // 每个节点里存储当前 val 和当前最小值
+8. 152 乘积最大子数组
+   // 需要维护以当前 i 结尾的 maxValue 和 minValue，用于后续的乘积运算，注意当前 i 的值为负数时，最大值、最小值作用会相反
+   // maxValue = max(nums[i], nums[i]*maxValue)
+   // minValue = min(nums[i], nums[i]*minValue)
+9. 148 排序链表
+   // 归并排序：双指针找到两边的 head，然后拆开，然后把两个已经 sorted 的联表 merge 成一个 sorted 的联表
