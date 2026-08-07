@@ -331,3 +331,9 @@
     // 异或运算满足交换律和结合律，即 a⊕b⊕a=b⊕a⊕a=b⊕(a⊕a)=b⊕0=b。
 18. 647 回文子串
     // 每个回文串有两种算法，奇数(i,i)、偶数(i,i+1)，每个从中间往两边拓展计数
+19. 128 最长连续序列
+    // 使用 num_set 来记录去重后的num，然后遍历 num，如果 num-1 存在则跳过，
+    // 如果num-1不存在则该num为数组第一个，从该num开始向后遍历来计算最长长度
+20. 124 二叉树中的最大路径和
+    // dfs 后序遍历，算当前节点+两边节点最大值 max(0,LeftValue)+max(0,RightValue)+rootValue
+    // 返回上层的时候只能选择其中一个边，因此 return max(0,LeftValue,RightValue)+rootValue
