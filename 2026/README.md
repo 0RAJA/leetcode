@@ -337,3 +337,9 @@
 20. 124 二叉树中的最大路径和
     // dfs 后序遍历，算当前节点+两边节点最大值 max(0,LeftValue)+max(0,RightValue)+rootValue
     // 返回上层的时候只能选择其中一个边，因此 return max(0,LeftValue,RightValue)+rootValue
+21. 322 零钱兑换
+    // 动态规划来记录过去每个数量所需的最小硬币数 dp[i] = dp[i-coin] + 1
+22. 416 分割等和子集
+    // 动态规划 0-1 背包计数问题：从 N 个元素中找出总价值能否达到 target
+    // dp[i] 表示能否凑出 i
+    // dp[i] = dp[i-1] || dp[target-i] target = sum/2
