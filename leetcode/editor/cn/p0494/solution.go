@@ -52,6 +52,10 @@ package p0494
 // 即：从 nums 中选择 num 使得总和为 (sum+target)/2 的方法个数 -> 0-1背包计数问题
 // dp[i] += dp[i-num] + 1 ; dp[i] 表示总数为 i 的使用 num 的方案数
 // 注意每个 num 只能使用一次
+// 0-1背包组合计数问题
+// 0-1背包：从大到小遍历 bag
+// 组合：先遍历 nums 再遍历 bag
+// 计数：dp[i] += dp[i-num] + 1
 func findTargetSumWays(nums []int, target int) (res int) {
 	sum := 0
 	for _, num := range nums {

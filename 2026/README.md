@@ -338,11 +338,18 @@
     // dfs 后序遍历，算当前节点+两边节点最大值 max(0,LeftValue)+max(0,RightValue)+rootValue
     // 返回上层的时候只能选择其中一个边，因此 return max(0,LeftValue,RightValue)+rootValue
 21. 322 零钱兑换
-    // 动态规划来记录过去每个数量所需的最小硬币数 dp[i] = dp[i-coin] + 1
+    // 完全背包组合最小值问题
+    // dp[i] 表达凑成金额 i 的最小硬币数；dp[i] = min(dp[i],dp[i-num]+1)
+    // 完全背包：从小到大遍历 bag
+    // 组合：由于是最小值问题，所以内外层遍历方式不影响答案
+    // 最小值：dp[i] = min(dp[i],dp[i-num]+1)
 22. 416 分割等和子集
-    // 动态规划 0-1 背包计数问题：从 N 个元素中找出总价值能否达到 target
+    // 动态规划 0-1 背包组合盘存在问题：从 N 个元素中找出总价值能否达到 target
     // dp[i] 表示能否凑出 i
     // dp[i] = dp[i-1] || dp[target-i] target = sum/2
+    // 0-1 背包：从大到小遍历 bag
+    // 组合：外层 遍历 num，内层遍历 bag
+    // 存在：dp[i] = dp[i] || dp[i-num]
 23. 494 目标和
     // 假设选为正数的 num 和为 X，选为负数的 num 和为 Y
     // X+Y = sum；X - Y = target
@@ -350,3 +357,17 @@
     // 即：从 nums 中选择 num 使得总和为 (sum+target)/2 的方法个数 -> 0-1背包计数问题
     // dp[i] += dp[i-num] + 1 ; dp[i] 表示总数为 i 的使用 num 的方案数
     // 注意每个 num 只能使用一次
+    // 0-1背包组合计数问题
+    // 0-1背包：从大到小遍历 bag
+    // 组合：先遍历 nums 再遍历 bag
+    // 计数：dp[i] += dp[i-num] + 1
+24. 518 零钱兑换 II
+    // 完全背包组合计数
+    // 完全背包：从小到大遍历 bag
+    // 组合：外层 coin 内层 bag
+    // 计数：dp[i] 表示总数为 i 下的方案数; dp[i] += dp[i-coin] + 1;
+25. 377 组合总和 Ⅳ
+    // 完全背包排列计数问题
+    // 完全背包：从小到大遍历 bag
+    // 排列：外层遍历 bag，内层遍历 num
+    // 计数：dp[i] += dp[i-num]; dp[i] 表示 bag 为 i 时的方案数
