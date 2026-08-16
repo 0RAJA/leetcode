@@ -36,7 +36,7 @@
 // 0 <= amount <= 10⁴
 //
 //
-// Related Topics 广度优先搜索 数组 动态规划 背包问题 完全背包 👍 3295 👎 0
+// Related Topics 广度优先搜索 数组 动态规划 背包问题 完全背包 👍 3298 👎 0
 
 package p0322
 
@@ -47,14 +47,15 @@ func coinChange(coins []int, amount int) int {
 	if amount == 0 {
 		return 0
 	}
+	coinMap := make(map[int]bool)
+	for _, coin := range coins {
+		coinMap[coin] = true
+	}
 	dp := make([]int, amount+1)
 	dp[0] = 0 // 组成 0 的最小硬币数为0
 	// 从小到大，因为硬币是可以被反复使用的，那么后者可以利用前者形成的结果
-	for i := 1; i <= amount; i++ {
-		for _, coin := range coins {
-			if coin > i {
-				continue
-			}
+	for _, coin := range coins {
+		for i := coin; i <= amount; i++ {
 			if i != coin && dp[i-coin] == 0 {
 				continue
 			}
