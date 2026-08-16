@@ -343,3 +343,10 @@
     // 动态规划 0-1 背包计数问题：从 N 个元素中找出总价值能否达到 target
     // dp[i] 表示能否凑出 i
     // dp[i] = dp[i-1] || dp[target-i] target = sum/2
+23. 494 目标和
+    // 假设选为正数的 num 和为 X，选为负数的 num 和为 Y
+    // X+Y = sum；X - Y = target
+    // 2X = sum + target ; X = (sum+target)/2
+    // 即：从 nums 中选择 num 使得总和为 (sum+target)/2 的方法个数 -> 0-1背包计数问题
+    // dp[i] += dp[i-num] + 1 ; dp[i] 表示总数为 i 的使用 num 的方案数
+    // 注意每个 num 只能使用一次
