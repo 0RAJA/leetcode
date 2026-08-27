@@ -381,4 +381,8 @@
 29. 437 路径总和 III
     // 两层深搜：一层搜所有节点，一层以当前节点为根搜路径数
     // 使用前缀和 prefixMap 记录每个前缀区间数，求次数时用 res += prefixMap[sum-targetSum]
-30.
+30. 399 除法求值
+    // 图dfs检索
+    // 先根据 a/b = x 构造 graph(边集数组)：a -> b = x; b -> a = 1/x
+    // 然后对于每个 query dfs 遍历 graph，维护 累计乘法结果、当前元素、目标元素、visited 访问记录
+31.
