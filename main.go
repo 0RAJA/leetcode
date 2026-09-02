@@ -17,8 +17,8 @@ func main() {
 	// testMap()
 	// testMMM()
 	// testSearch()
-	// testSlice()
-	testSort()
+	testSlice()
+	// testSort()
 }
 
 func testSort() {
@@ -36,6 +36,9 @@ func testSlice() {
 	}
 	test(nums)
 	fmt.Println(nums)
+	nums = []int{1}
+	fmt.Println(nums[:1])
+	fmt.Println(nums[1:])
 }
 func testSearch() {
 	/*

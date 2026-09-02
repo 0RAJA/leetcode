@@ -416,3 +416,7 @@
     //    2. 不偷左边+不偷右边：noRobValLeft+noRobValRight
     //    3. 偷左边+偷右边：robValLeft+robValRight
     //    4. 偷左边+不偷右边：robValLeft+noRobValRight
+35. 121 买卖股票的最佳时机
+    // 只能买一次、卖一次；假设今天卖出，那么买入的一定是到目前为止的最小值的那一天
+    // 维护一个到当前为止的最小值，以及一个最大利润
+36. 312 戳气球
