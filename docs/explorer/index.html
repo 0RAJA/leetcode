@@ -61,26 +61,34 @@
     <p id="load-error" class="load-error" hidden></p>
   </main>
 
-  <dialog id="problem-dialog" aria-labelledby="detail-title">
-    <div class="dialog-topline"><span id="detail-eyebrow">题目手记</span><button type="button" id="back-problem" class="text-button" hidden>← 返回上一题</button><button type="button" id="close-dialog" class="icon-button" aria-label="关闭题目详情">×</button></div>
-    <div class="detail-heading"><div><h2 id="detail-title"></h2><div id="detail-tags" class="detail-tags"></div></div><button type="button" id="detail-review" class="secondary-button"></button></div>
-    <div class="detail-layout">
-      <div class="detail-content">
-        <div role="tablist" aria-label="题目内容" class="detail-tabs">
+  <dialog id="problem-dialog" aria-labelledby="detail-title" class="reader">
+    <header class="reader-header">
+      <div class="dialog-topline">
+        <button type="button" id="return-index" class="text-button">← 题目索引</button>
+        <span id="detail-eyebrow">题目手记</span>
+        <div class="reader-tools"><button type="button" id="toggle-reader-size" class="reader-tool" aria-pressed="false"><span aria-hidden="true">⛶</span> <span id="reader-size-label">全屏阅读</span></button><button type="button" id="close-dialog" class="icon-button" aria-label="关闭题目详情">×</button></div>
+      </div>
+      <div class="detail-heading"><div><h2 id="detail-title" tabindex="-1"></h2><div id="detail-tags" class="detail-tags"></div></div><button type="button" id="detail-review" class="secondary-button"></button></div>
+      <div class="reader-tabline"><div role="tablist" aria-label="题目内容" class="detail-tabs">
           <button type="button" id="recall-tab" role="tab" aria-controls="recall-panel" aria-selected="true">先回忆</button>
           <button type="button" id="notes-tab" role="tab" aria-controls="notes-panel" aria-selected="false" tabindex="-1">思路笔记 <span id="detail-note-count"></span></button>
           <button type="button" id="code-tab" role="tab" aria-controls="code-panel" aria-selected="false" tabindex="-1">Go 题解 <span id="detail-source-count"></span></button>
-        </div>
+      </div><button type="button" id="toggle-reader-outline" class="text-button" aria-expanded="false" aria-controls="reader-outline">本轮题目 <span id="outline-count"></span> ≡</button></div>
+    </header>
+    <div class="detail-layout">
+      <div class="detail-content" id="reader-scroll">
         <section id="recall-panel" role="tabpanel" aria-labelledby="recall-tab">
           <div class="recall-box"><p class="eyebrow">先给自己一次独立尝试</p><h3 id="recall-focus">这道题的关键状态和边界是什么？</h3><p id="recall-route"></p><ol><li>打开原题，先说出解题思路和复杂度。</li><li>想想循环不变量、状态转移或终止条件。</li><li>拿一个边界例子验证，再看自己的实现。</li></ol><div class="hero-actions"><a id="recall-problem-link" class="primary-button" target="_blank" rel="noopener noreferrer">打开原题 ↗</a><button type="button" id="reveal-notes" class="secondary-button">看思路提示</button><button type="button" id="reveal-code" class="text-button">直接看 Go 题解 →</button></div></div>
         </section>
         <section id="notes-panel" role="tabpanel" aria-labelledby="notes-tab" hidden></section>
-        <section id="code-panel" role="tabpanel" aria-labelledby="code-tab" hidden><div class="code-toolbar"><label for="source-select">题解版本</label><select id="source-select"></select><button type="button" id="copy-code" class="text-button">复制代码</button></div><pre class="source-code" tabindex="0"><code id="source-code" class="language-go"></code></pre><p id="source-path" class="source-path"></p></section>
+        <section id="code-panel" role="tabpanel" aria-labelledby="code-tab" hidden><div class="code-toolbar"><label for="source-select">题解版本</label><select id="source-select"></select><div class="code-actions"><button type="button" id="wrap-code" class="text-button" aria-pressed="false">自动换行</button><button type="button" id="copy-code" class="text-button">复制代码</button></div></div><pre class="source-code" tabindex="0" aria-label="Go 题解代码"><code id="source-code" class="language-go"></code></pre><p id="source-path" class="source-path"></p></section>
         <div class="recall-actions"><span>尝试后自评</span><button type="button" id="rate-again" class="secondary-button">需要再练</button><button type="button" id="rate-recalled" class="secondary-button">能独立写出</button><button type="button" id="clear-rating" class="text-button" hidden>清除此题自评</button><p id="review-result" role="status"></p></div>
         <section class="related-problems" aria-labelledby="related-title"><h3 id="related-title">接着比较什么</h3><div id="related-problems"></div></section>
       </div>
-      <aside class="detail-sidebar"><p class="section-label">回到原始记录</p><a id="detail-problem-link" class="resource-link" target="_blank" rel="noopener noreferrer">打开原题 <span>↗</span></a><div id="detail-resources"></div><div class="detail-tip"><span>复习标记只保存在当前浏览器</span><p>“需要再练”加入待复习；<br>“能独立写出”移出队列。<br>自评不等于平台通过记录。</p></div></aside>
+      <aside class="detail-sidebar" id="reader-outline" aria-label="本轮题目与原始记录"><div class="reader-outline-heading"><p class="section-label">本轮题目</p><span id="reader-position"></span></div><p id="reader-context"></p><nav id="reader-queue" aria-label="本轮题目"></nav><details class="reader-resources"><summary>原始记录与测试</summary><a id="detail-problem-link" class="resource-link" target="_blank" rel="noopener noreferrer">打开原题 <span>↗</span></a><div id="detail-resources"></div></details><p class="detail-tip">复习标记只保存在当前浏览器。<br>查看题解不会自动标为掌握。</p></aside>
     </div>
+    <footer class="reader-footer"><div class="reader-progress"><span id="reader-progress" aria-live="polite"></span><button type="button" id="back-problem" class="text-button" hidden>↶ 返回刚才的题</button><span class="reader-keyboard-hint">Alt + ← / → 切题 · Esc 返回</span></div><nav class="reader-pager" aria-label="切换题目"><button type="button" id="previous-problem" class="reader-page-button"><span>← 上一题</span><strong id="previous-problem-title"></strong></button><button type="button" id="next-problem" class="reader-page-button"><span>下一题 →</span><strong id="next-problem-title"></strong></button></nav></footer>
+    <div id="reader-toast" class="reader-toast" role="status" hidden></div>
   </dialog>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 </body>

@@ -35,6 +35,9 @@
   let currentProblem = null;
   let currentTab = "recall";
   let problemTrail = [];
+  let readingSequence = { ids: [], label: "" };
+  let readerExpanded = false;
+  let returnFocus = null;
   let attempts = Object.create(null);
   let filtered = [];
   let toastTimeout;
@@ -69,9 +72,12 @@
   const ordered = (items) => [...items].sort((a, b) => a.id.localeCompare(b.id, "zh-CN", { numeric: true }));
   const showToast = (text) => {
     clearTimeout(toastTimeout);
-    $("toast").textContent = text;
-    $("toast").hidden = false;
-    toastTimeout = setTimeout(() => { $("toast").hidden = true; }, 3600);
+    const target = $("problem-dialog").open ? $("reader-toast") : $("toast");
+    $("toast").hidden = true;
+    $("reader-toast").hidden = true;
+    target.textContent = text;
+    target.hidden = false;
+    toastTimeout = setTimeout(() => { target.hidden = true; }, 3600);
   };
   const saveReviews = () => {
     try { localStorage.setItem(storageKey, JSON.stringify([...reviews].sort())); }
@@ -204,6 +210,7 @@
         const node = element("button", "route-step");
         node.type = "button";
         node.dataset.problem = step.id;
+        node.dataset.path = path.id;
         node.classList.toggle("muted", !matches.has(step.id));
         node.title = step.connection || step.focus;
         node.append(element("span", "step-number", String(index + 1).padStart(2, "0")),
@@ -332,6 +339,9 @@
       $(`${name}-tab`).tabIndex = selected ? 0 : -1;
       $(`${name}-panel`).hidden = !selected;
     }
+    $("reader-scroll").scrollTop = 0;
+    $("problem-dialog").classList.remove("outline-open");
+    $("toggle-reader-outline").setAttribute("aria-expanded", "false");
   }
   function resource(label, path, suffix, anchor) {
     const node = link("", repoURL(path, anchor), "resource-link");
@@ -344,7 +354,61 @@
     const source = currentProblem.sources[index] || currentProblem.sources[0];
     highlightCode($("source-code"), source.code || "// 此版本暂无可显示的代码，请通过右侧链接查看原始文件。");
     $("source-code").parentElement.scrollTop = 0;
+    $("source-code").parentElement.scrollLeft = 0;
     $("source-path").textContent = source.path;
+    $("reader-scroll").scrollTop = 0;
+  }
+  function sequenceFor(id, pathId) {
+    const path = paths.find((item) => item.id === pathId);
+    const ids = path ? path.steps.map((step) => step.id).filter((stepId) => byId.has(stepId)) : filtered.map((problem) => problem.id);
+    const filteredLabel = [scopes[state.scope][0], state.topic, state.difficulty, state.q ? `搜索“${state.q}”` : "", { notes: "有思路笔记", tests: "有测试文件", "no-notes": "待补笔记" }[state.record]].filter(Boolean).join(" · ");
+    return { ...model.readingSequence(id, ids, path ? path.title : filteredLabel), pathId: path?.id };
+  }
+  function renderReaderNavigation() {
+    const index = readingSequence.ids.indexOf(currentProblem.id);
+    const total = readingSequence.ids.length;
+    const position = `${index + 1} / ${total}`;
+    $("reader-position").textContent = position;
+    $("outline-count").textContent = String(total);
+    $("reader-context").textContent = readingSequence.label;
+    $("reader-progress").textContent = `第 ${index + 1} / ${total} 题 · ${readingSequence.label}`;
+    for (const [direction, offset] of [["previous", -1], ["next", 1]]) {
+      const neighbor = byId.get(readingSequence.ids[index + offset]);
+      const button = $(`${direction}-problem`);
+      button.disabled = !neighbor;
+      $(`${direction}-problem-title`).textContent = neighbor ? `${neighbor.id} ${neighbor.title}` : direction === "previous" ? "已经是第一题" : "已经是最后一题";
+      button.title = neighbor ? `${direction === "previous" ? "上一题" : "下一题"}：${neighbor.title}` : "";
+    }
+    const queue = $("reader-queue");
+    queue.replaceChildren();
+    readingSequence.ids.forEach((id, queueIndex) => {
+      const problem = byId.get(id);
+      const button = element("button", "reader-queue-item");
+      button.type = "button";
+      button.dataset.reading = id;
+      button.setAttribute("aria-current", id === currentProblem.id ? "step" : "false");
+      button.append(element("span", "queue-number", String(queueIndex + 1).padStart(2, "0")), element("span", "", `${problem.id} ${problem.title}`));
+      queue.append(button);
+    });
+    $("back-problem").hidden = !problemTrail.length;
+  }
+  function currentReadingPosition() {
+    return { id: currentProblem.id, tab: currentTab, sequence: readingSequence,
+      sourceIndex: Number($("source-select").value), scrollTop: $("reader-scroll").scrollTop };
+  }
+  function scrollQueueToCurrent() {
+    const selected = $("reader-queue").querySelector('[aria-current="step"]');
+    if (selected) $("reader-queue").scrollTop = selected.offsetTop - $("reader-queue").offsetTop - 56;
+  }
+  function navigateReading(id) {
+    if (!id || id === currentProblem?.id) return;
+    problemTrail.push(currentReadingPosition());
+    openProblem(id, { tab: currentTab, keepTrail: true, sequence: readingSequence });
+  }
+  function adjacentProblem(offset) {
+    if (!currentProblem) return;
+    const index = readingSequence.ids.indexOf(currentProblem.id);
+    navigateReading(readingSequence.ids[index + offset]);
   }
   function renderRelated(problem) {
     const container = $("related-problems");
@@ -362,6 +426,8 @@
   }
   function renderAttempt() {
     const attempt = currentProblem && attempts[currentProblem.id];
+    $("rate-again").setAttribute("aria-pressed", String(attempt?.result === "needs-practice"));
+    $("rate-recalled").setAttribute("aria-pressed", String(attempt?.result === "recalled"));
     $("clear-rating").hidden = !attempt;
     $("review-result").textContent = attempt ? `最近自评：${attempt.result === "recalled" ? "能独立写出" : "需要再练"}。当前${reviews.has(currentProblem.id) ? "已加入" : "未加入"}待复习，仅保存在当前浏览器。` : "还没有自评记录；查阅代码不会自动标为掌握。";
   }
@@ -374,10 +440,12 @@
     saveReviews(); render(); renderAttempt();
     setBookmarkButton($("detail-review"), currentProblem, true);
   }
-  function openProblem(id, updateHash = true, tab = "recall", keepTrail = false) {
+  function openProblem(id, { updateHash = true, tab = "recall", keepTrail = false, sequence = null, pathId, sourceIndex = 0, scrollTop = 0 } = {}) {
     const problem = byId.get(id);
     if (!problem) return;
     if (!keepTrail) problemTrail = [];
+    if (!$("problem-dialog").open) returnFocus = document.activeElement;
+    readingSequence = sequence || sequenceFor(id, pathId);
     currentProblem = problem;
     $("back-problem").hidden = !problemTrail.length;
     $("detail-title").textContent = `${problem.id} · ${problem.title}`;
@@ -409,7 +477,8 @@
     const select = $("source-select");
     select.replaceChildren();
     problem.sources.forEach((source, index) => select.add(new Option(`${source.kind === "current" ? "当前练习" : "历史版本"} · ${source.path}`, String(index))));
-    renderSource(0);
+    select.value = String(problem.sources[sourceIndex] ? sourceIndex : 0);
+    renderSource(Number(select.value));
     const external = safeExternal(problem.url);
     $("detail-problem-link").hidden = !external;
     if (external) $("detail-problem-link").href = external; else $("detail-problem-link").removeAttribute("href");
@@ -431,27 +500,57 @@
     }
     renderRelated(problem);
     renderAttempt();
+    renderReaderNavigation();
     showTab(tab);
     if (!$("problem-dialog").open) $("problem-dialog").showModal();
-    else $(`${tab}-tab`).focus();
-    $("problem-dialog").scrollTop = 0;
+    $("detail-title").focus({ preventScroll: true });
+    $("reader-scroll").scrollTop = scrollTop;
+    scrollQueueToCurrent();
+    $("reader-toast").hidden = true;
     if (updateHash) {
       const url = new URL(location.href);
-      url.hash = `problem=${encodeURIComponent(id)}`;
+      const hash = new URLSearchParams({ problem: id });
+      if (readingSequence.pathId) hash.set("path", readingSequence.pathId);
+      url.hash = hash.toString();
       try { history.replaceState(null, "", url); } catch (_) { /* Details remain usable on restrictive file origins. */ }
     }
   }
   $("problem-dialog").addEventListener("close", () => {
     currentProblem = null;
     problemTrail = [];
+    $("problem-dialog").classList.remove("outline-open");
+    $("toggle-reader-outline").setAttribute("aria-expanded", "false");
+    $("reader-toast").hidden = true;
     const url = new URL(location.href);
     url.hash = "";
     try { history.replaceState(null, "", url); } catch (_) { /* No navigation needed. */ }
+    (returnFocus?.isConnected ? returnFocus : $("search")).focus({ preventScroll: true });
   });
   $("back-problem").addEventListener("click", () => {
     const previous = problemTrail.pop();
-    if (previous) openProblem(previous.id, true, previous.tab, true);
+    if (previous) openProblem(previous.id, { ...previous, keepTrail: true });
   });
+  $("previous-problem").addEventListener("click", () => adjacentProblem(-1));
+  $("next-problem").addEventListener("click", () => adjacentProblem(1));
+  $("reader-queue").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-reading]");
+    if (!button) return;
+    navigateReading(button.dataset.reading);
+    $("problem-dialog").classList.remove("outline-open");
+    $("toggle-reader-outline").setAttribute("aria-expanded", "false");
+  });
+  $("toggle-reader-size").addEventListener("click", () => {
+    readerExpanded = !readerExpanded;
+    $("problem-dialog").classList.toggle("reader-expanded", readerExpanded);
+    $("toggle-reader-size").setAttribute("aria-pressed", String(readerExpanded));
+    $("reader-size-label").textContent = readerExpanded ? "退出全屏" : "全屏阅读";
+  });
+  $("toggle-reader-outline").addEventListener("click", () => {
+    const expanded = $("problem-dialog").classList.toggle("outline-open");
+    $("toggle-reader-outline").setAttribute("aria-expanded", String(expanded));
+    if (expanded) scrollQueueToCurrent();
+  });
+  $("return-index").addEventListener("click", () => $("problem-dialog").close());
   $("close-dialog").addEventListener("click", () => $("problem-dialog").close());
   $("problem-dialog").addEventListener("click", (event) => {
     if (event.target !== $("problem-dialog")) return;
@@ -472,6 +571,7 @@
     render(); renderAttempt(); showToast("此题自评已清除，待复习标记保持原状。");
   });
   document.querySelector(".detail-tabs").addEventListener("keydown", (event) => {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
     event.preventDefault();
     const tabs = ["recall", "notes", "code"];
@@ -480,6 +580,10 @@
     $(`${tab}-tab`).focus();
   });
   $("source-select").addEventListener("change", (event) => renderSource(Number(event.target.value)));
+  $("wrap-code").addEventListener("click", () => {
+    const wrap = $("source-code").parentElement.classList.toggle("wrap-code");
+    $("wrap-code").setAttribute("aria-pressed", String(wrap));
+  });
   $("detail-review").addEventListener("click", () => { if (currentProblem) toggleReview(currentProblem.id); });
   $("copy-code").addEventListener("click", async () => {
     try { await navigator.clipboard.writeText($("source-code").textContent); showToast("代码已复制。"); }
@@ -493,8 +597,10 @@
     if (view) { state.view = view.dataset.view; render(); return; }
     const related = event.target.closest("[data-related]");
     if (related && currentProblem) {
-      problemTrail.push({ id: currentProblem.id, tab: currentTab });
-      openProblem(related.dataset.related, true, "recall", true); return;
+      problemTrail.push(currentReadingPosition());
+      const id = related.dataset.related;
+      const sequence = readingSequence.ids.includes(id) ? readingSequence : sequenceFor(id);
+      openProblem(id, { keepTrail: true, sequence }); return;
     }
     const scope = event.target.closest("[data-scope]");
     if (scope) { state.scope = scope.dataset.scope; state.topic = ""; state.page = 1; render(); return; }
@@ -505,7 +611,7 @@
     const review = event.target.closest("[data-review]");
     if (review) { toggleReview(review.dataset.review); return; }
     const row = event.target.closest("[data-problem]");
-    if (row) openProblem(row.dataset.problem);
+    if (row) openProblem(row.dataset.problem, { pathId: row.dataset.path });
   });
   $("clear-topic").addEventListener("click", () => { state.topic = ""; state.page = 1; render(); });
   $("reset-filters").addEventListener("click", resetFilters);
@@ -517,6 +623,10 @@
     if (problem) openProblem(problem.id);
   });
   document.addEventListener("keydown", (event) => {
+    if ($("problem-dialog").open && event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey && ["ArrowLeft", "ArrowRight"].includes(event.key) && !["INPUT", "TEXTAREA", "SELECT"].includes(event.target.tagName)) {
+      event.preventDefault();
+      adjacentProblem(event.key === "ArrowLeft" ? -1 : 1);
+    }
     if (event.key === "/" && !$("problem-dialog").open && !event.ctrlKey && !event.metaKey && !event.altKey && !["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement.tagName)) { event.preventDefault(); $("search").focus(); }
   });
   $("export-review").addEventListener("click", () => {
@@ -562,8 +672,8 @@
   }
   render();
   function openHash() {
-    const match = /^#problem=(.+)$/.exec(location.hash);
-    if (match) { try { openProblem(decodeURIComponent(match[1]), false); } catch (_) { /* Ignore invalid deep links. */ } }
+    const hash = new URLSearchParams(location.hash.slice(1));
+    if (hash.has("problem")) { try { openProblem(hash.get("problem"), { updateHash: false, pathId: hash.get("path") }); } catch (_) { /* Ignore invalid deep links. */ } }
   }
   window.addEventListener("hashchange", openHash);
   openHash();

@@ -63,5 +63,11 @@
     return clean;
   }
 
-  return { relatedProblems, chooseReview, validAttempts };
+  // A reading session keeps its order even when a self-rating changes the filter.
+  function readingSequence(id, ids, label) {
+    const unique = [...new Set(ids)];
+    return unique.includes(id) ? { ids: unique, label } : { ids: [id], label: "单题阅读" };
+  }
+
+  return { relatedProblems, chooseReview, validAttempts, readingSequence };
 });

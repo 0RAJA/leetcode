@@ -65,3 +65,23 @@ test('vendored highlighter recognizes Go and safely escapes source content', () 
   assert.ok(!html.includes('<script>'));
   assert.ok(html.includes('&lt;script&gt;'));
 });
+
+test('reading sequence follows a curated path instead of numeric question order', () => {
+  const route = paths.find((item) => item.id === 'binary-search');
+  const sequence = model.readingSequence('704', route.steps.map((step) => step.id), route.title);
+  assert.deepEqual(sequence.ids, ['704', '34', '33']);
+  assert.equal(sequence.label, route.title);
+});
+
+test('self-rating cannot remove the current question from an existing reading session', () => {
+  const visibleIds = ['1', '15', '18'];
+  const sequence = model.readingSequence('15', visibleIds, '待复习 · 双指针');
+  visibleIds.splice(1, 1);
+  assert.deepEqual(sequence.ids, ['1', '15', '18']);
+  assert.equal(sequence.ids[sequence.ids.indexOf('15') + 1], '18');
+});
+
+test('a deep link outside the current filter opens an explicit single-question session', () => {
+  const sequence = model.readingSequence('704', ['1', '15', '18'], '当前练习');
+  assert.deepEqual(sequence, {ids: ['704'], label: '单题阅读'});
+});
