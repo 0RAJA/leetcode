@@ -8,7 +8,6 @@ on:
       - '2026/**'
       - 'scripts/**'
       - 'catalog.config.json'
-      - 'README.md'
       - 'docs/explorer/**'
       - '.github/workflows/catalog.yml'
   pull_request:
@@ -82,7 +81,7 @@ jobs:
       - run: python scripts/build_catalog.py
       - name: Save updated catalog
         run: |
-          git add README.md docs/CATALOG.md docs/assets/catalog.svg docs/explorer/data.js
+          git add docs/CATALOG.md docs/explorer/data.js
           if git diff --cached --quiet; then
             exit 0
           fi

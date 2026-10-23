@@ -12,6 +12,7 @@
   const byId = new Map(problems.map((problem) => [problem.id, problem]));
   const paths = window.LEETCODE_PATHS?.paths || [];
   const model = window.StudyModel;
+  const summary = model.catalogSummary(problems);
   const storageKey = "raja-leetcode-review-v1";
   const attemptKey = "raja-leetcode-attempts-v1";
   const pageSize = 16;
@@ -230,9 +231,9 @@
     }));
     const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
     state.page = Math.min(state.page, pageCount);
-    $("count-current").textContent = String(problems.filter((problem) => problem.active).length);
-    $("count-all").textContent = String(problems.length);
-    $("count-archive").textContent = String(problems.filter((problem) => !problem.active).length);
+    $("count-current").textContent = String(summary.active);
+    $("count-all").textContent = String(summary.total);
+    $("count-archive").textContent = String(summary.archived);
     $("count-review").textContent = String(reviews.size);
     $("list-title").textContent = scopes[state.scope][0];
     $("scope-description").textContent = scopes[state.scope][1];
@@ -661,10 +662,10 @@
   });
   $("repo-link").href = repo;
   $("readme-link").href = `${repo}#readme`;
-  $("stat-active").textContent = String(problems.filter((problem) => problem.active).length);
-  $("stat-total").textContent = String(problems.length);
-  $("stat-notes").textContent = String(problems.filter((problem) => problem.notes.length).length);
-  $("stat-tests").textContent = String(problems.filter(hasTests).length);
+  $("stat-active").textContent = String(summary.active);
+  $("stat-total").textContent = String(summary.total);
+  $("stat-notes").textContent = String(summary.withNotes);
+  $("stat-tests").textContent = String(summary.withTests);
   if (Array.isArray(data.unindexed) && data.unindexed.length) {
     const notice = $("mapping-notice");
     notice.append(document.createTextNode(`另有 ${data.unindexed.length} 份历史练习待补题目映射，原始文件均已保留。`), link("查看待补映射清单 ↗", repoURL("docs/CATALOG.md", "待补映射")));

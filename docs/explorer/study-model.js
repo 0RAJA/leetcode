@@ -8,6 +8,16 @@
   const broadTopics = new Set(["数组", "字符串", "数学", "排序", "未分类", "算法"]);
   const results = new Set(["needs-practice", "recalled"]);
 
+  function catalogSummary(problems) {
+    return {
+      total: problems.length,
+      active: problems.filter((problem) => problem.active).length,
+      archived: problems.filter((problem) => !problem.active).length,
+      withNotes: problems.filter((problem) => problem.notes.length).length,
+      withTests: problems.filter((problem) => problem.sources.some((source) => source.tests.length)).length,
+    };
+  }
+
   function relatedProblems(problem, problems, paths, limit = 4) {
     const byId = new Map(problems.map((item) => [item.id, item]));
     const related = new Map();
@@ -69,5 +79,5 @@
     return unique.includes(id) ? { ids: unique, label } : { ids: [id], label: "单题阅读" };
   }
 
-  return { relatedProblems, chooseReview, validAttempts, readingSequence };
+  return { catalogSummary, relatedProblems, chooseReview, validAttempts, readingSequence };
 });

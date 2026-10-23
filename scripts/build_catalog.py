@@ -14,8 +14,6 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 LEVELS = {1: "简单", 2: "中等", 3: "困难"}
-START = "<!-- catalog:start -->"
-END = "<!-- catalog:end -->"
 
 
 def normalized(value):
@@ -117,10 +115,14 @@ def note_entries(markdown):
             lines.append(line)
 
 
-def entry_identity(text, frontend, titles):
+def entry_heading(text):
     first = text.splitlines()[0]
     # Some original notes use "数组：704.二分查找" or "第454题.四数相加II".
-    first = re.sub(r"^(?:数组|链表|哈希表|字符串|栈与队列|二叉树|回溯|贪心算法|单调栈)[：:]\s*", "", first)
+    return re.sub(r"^(?:数组|链表|哈希表|字符串|栈与队列|二叉树|回溯|贪心算法|单调栈)[：:]\s*", "", first)
+
+
+def entry_identity(text, frontend, titles):
+    first = entry_heading(text)
     number = re.match(r"^(?:第)?(\d+)(?:[.、\s]|题)", first)
     if number:
         return number.group(1)
@@ -132,15 +134,40 @@ def entry_identity(text, frontend, titles):
     return max(matches, default=(0, None))[1]
 
 
+def configured_note_ids(text, problems, identities):
+    heading = re.sub(r"^第(\d+)题", r"\1", entry_heading(text))
+    beginning = normalized(re.split(r"[：:]", heading, maxsplit=1)[0])
+    matches = []
+    for identity in identities:
+        if identity not in problems:
+            continue
+        title = problems[identity]["title"]
+        number = re.search(r"\d+$", identity)
+        prefixes = [title, identity + title]
+        if number:
+            prefixes.append(number.group() + title)
+        for prefix in prefixes:
+            key = normalized(prefix)
+            if key and beginning.startswith(key):
+                matches.append((len(key), identity))
+    longest = max((length for length, _ in matches), default=0)
+    return {identity for length, identity in matches if length == longest}
+
+
 def has_note_content(text):
     # A bare numbered title is an entry in a route, not a written explanation.
-    if re.search(r"[：:]\s*TODO\s*$", text, re.IGNORECASE):
+    lines = text.splitlines()
+    if not lines:
         return False
-    return len(text.splitlines()) > 1 or bool(re.search(r"[：:]\s*\S", text.splitlines()[0]))
+    lines[0] = entry_heading(text)
+    if re.search(r"[：:]\s*TODO\s*$", "\n".join(lines), re.IGNORECASE):
+        return False
+    return len(lines) > 1 or bool(re.search(r"[：:]\s*\S", lines[0]))
 
 
 def build_catalog(root, paths=None):
     paths = tracked_paths(root) if paths is None else sorted(set(paths))
+    paths = [path for path in paths if (root / path).is_file()]
     path_set = set(paths)
     config = json.loads(read(root, "catalog.config.json"))
     records = json.loads(read(root, "leetcode/editor/cn/all.json"))
@@ -203,14 +230,15 @@ def build_catalog(root, paths=None):
                     problems[identity][key] = patch[key]
 
     route = "2026/README.md"
+    configured_ids = {source["id"] for source in config.get("sources", {}).values()}
     if route in path_set:
         for section, text in note_entries(read(root, route)):
-            local_id = next((identity for identity, word in [
-                ("卡码网 58", "区间和"), ("卡码网 44", "开发商购买土地")
-            ] if word in text.splitlines()[0]), None)
-            if local_id:
-                if local_id in problems and has_note_content(text):
-                    problems[local_id]["notes"].append({
+            # Custom platforms can reuse a LeetCode number. Match their configured
+            # titles before numeric fallback; new mappings need no code changes.
+            local_ids = configured_note_ids(text, problems, configured_ids)
+            if local_ids:
+                if len(local_ids) == 1 and has_note_content(text):
+                    problems[next(iter(local_ids))]["notes"].append({
                         "title": section, "text": text, "path": route,
                         "anchor": section.lower().replace(" ", "-"),
                     })
@@ -226,6 +254,13 @@ def build_catalog(root, paths=None):
         if not path.startswith("leetcode/editor/cn/doc/note/") or not path.endswith(".md"):
             continue
         text = read(root, path).strip()
+        local_ids = configured_note_ids(PurePosixPath(path).stem, problems, configured_ids)
+        if local_ids:
+            if text and len(local_ids) == 1:
+                problems[next(iter(local_ids))]["notes"].append({
+                    "title": "独立笔记", "text": text, "path": path, "anchor": "",
+                })
+            continue
         found = filename_identity(path, frontend, names, titles)
         if text and found and found[0] in problems:
             problems[found[0]]["notes"].append({
@@ -237,15 +272,19 @@ def build_catalog(root, paths=None):
         row["sources"].sort(key=lambda s: (s["kind"] != "current", s["path"]))
         if not row["topics"]:
             row["topics"] = ["未分类"]
-    stats = {
+    return {"schemaVersion": 1, "repository": config["repository"],
+            "branch": config["branch"], "problems": rows,
+            "unindexed": sorted(unindexed)}
+
+
+def catalog_stats(data):
+    rows = data["problems"]
+    return {
         "total": len(rows), "active": sum(p["active"] for p in rows),
         "archived": sum(not p["active"] for p in rows),
         "withNotes": sum(bool(p["notes"]) for p in rows),
         "withTests": sum(any(s["tests"] for s in p["sources"]) for p in rows),
     }
-    return {"schemaVersion": 1, "repository": config["repository"],
-            "branch": config["branch"], "problems": rows, "stats": stats,
-            "unindexed": sorted(unindexed)}
 
 
 def sort_id(identity):
@@ -272,7 +311,7 @@ def markdown_row(data, problem):
 def catalog_markdown(data):
     lines = ["# 题解索引", "", "> 自动从已跟踪的题解和笔记生成，请勿直接编辑此文件。", "",
              "题号按页面展示编号映射；同题多版本合并。收录表示有本地代码记录，不等于 LeetCode 已通过。测试链接表示存在测试文件。", "",
-             "[交互导航的打开方式](catalog-guide.md) · [原始复习笔记](../2026/README.md)", ""]
+             "[导航使用说明](catalog-guide.md) · [维护指南](maintenance.md) · [原始复习笔记](../2026/README.md)", ""]
     for active, heading in [(True, "当前维护"), (False, "历史归档")]:
         lines += [f"## {heading}", "", "| 题号 | 题目 | 难度 | 题型 | 代码 | 笔记 | 测试 |",
                   "| --- | --- | --- | --- | --- | --- | --- |"]
@@ -284,50 +323,10 @@ def catalog_markdown(data):
     return "\n".join(lines) + "\n"
 
 
-def readme_summary(data):
-    stats = data["stats"]
-    active = [p for p in data["problems"] if p["active"]]
-    topics = collections.Counter(t for p in active for t in p["topics"])
-    lines = [START, "", "![题解概览](docs/assets/catalog.svg)", "",
-             f'当前维护 **{stats["active"]}** 题 · 历史归档 **{stats["archived"]}** 题 · 合并去重 **{stats["total"]}** 题', "",
-             f'其中 **{stats["withNotes"]}** 题关联了思路笔记，**{stats["withTests"]}** 题有测试文件。', "",
-             "| 当前题型 | 收录题数 | 当前题型 | 收录题数 |",
-             "| --- | ---: | --- | ---: |"]
-    frequent = topics.most_common(12)
-    for i in range(0, len(frequent), 2):
-        pair = frequent[i:i + 2]
-        if len(pair) == 1:
-            pair.append(("—", "—"))
-        lines.append(f"| {pair[0][0]} | {pair[0][1]} | {pair[1][0]} | {pair[1][1]} |")
-    lines += ["", "同题多版本只统计一次，题型可以重叠。以上为仓库代码记录，未读取或推断在线 AC 状态。", "", END]
-    return "\n".join(lines)
-
-
-def overview_svg(data):
-    s = data["stats"]
-    # Native SVG text and shapes keep the repository self contained.
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="224" viewBox="0 0 1000 224" role="img" aria-labelledby="title desc">
-<title id="title">LeetCode 题解与复习索引</title><desc id="desc">当前维护 {s['active']} 题，历史归档 {s['archived']} 题，关联笔记 {s['withNotes']} 题。</desc>
-<rect width="1000" height="224" rx="12" fill="#f2f1e9"/><rect x="0" y="0" width="10" height="224" fill="#657347"/>
-<g font-family="Georgia, 'Noto Serif SC', serif" fill="#273321"><text x="42" y="48" font-size="15" letter-spacing="3">RAJA / ALGORITHM NOTES</text>
-<text x="42" y="93" font-size="31">把做过的题，连成可回顾的思路。</text></g>
-<g font-family="'Microsoft YaHei', sans-serif" fill="#56604c" font-size="15"><text x="44" y="137">当前维护</text><text x="275" y="137">历史归档</text><text x="507" y="137">关联笔记</text><text x="740" y="137">带测试文件</text></g>
-<g font-family="Georgia, serif" fill="#283421" font-size="39"><text x="42" y="187">{s['active']}</text><text x="273" y="187">{s['archived']}</text><text x="505" y="187">{s['withNotes']}</text><text x="738" y="187">{s['withTests']}</text></g></svg>
-'''
-
-
-def outputs(root, data):
-    summary = readme_summary(data)
-    original = read(root, "README.md")
-    if START not in original or END not in original:
-        raise ValueError("README.md must contain catalog:start and catalog:end markers")
-    prefix, rest = original.split(START, 1)
-    _, suffix = rest.split(END, 1)
+def outputs(data):
     return {
         "docs/explorer/data.js": "// Generated by scripts/build_catalog.py; do not edit.\nwindow.LEETCODE_DATA = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c") + ";\n",
         "docs/CATALOG.md": catalog_markdown(data),
-        "docs/assets/catalog.svg": overview_svg(data),
-        "README.md": prefix + summary + suffix,
     }
 
 
@@ -337,14 +336,14 @@ def main():
     args = parser.parse_args()
     data = build_catalog(ROOT)
     stale = []
-    for path, content in outputs(ROOT, data).items():
+    for path, content in outputs(data).items():
         target = ROOT / path
         if not target.exists() or target.read_text(encoding="utf-8") != content:
             stale.append(path)
             if not args.check:
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(content, encoding="utf-8", newline="\n")
-    print(json.dumps({"stats": data["stats"], "unindexed": data["unindexed"], "changed": stale}, ensure_ascii=False))
+    print(json.dumps({"stats": catalog_stats(data), "unindexed": data["unindexed"], "changed": stale}, ensure_ascii=False))
     return int(args.check and bool(stale))
 
 

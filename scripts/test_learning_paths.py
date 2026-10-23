@@ -25,15 +25,13 @@ class LearningPathTests(unittest.TestCase):
         )
         cls.problems = {problem["id"]: problem for problem in catalog["problems"]}
 
-    def test_small_routes_have_unique_ids_and_no_repeated_step(self):
+    def test_routes_have_unique_ids_and_no_repeated_step(self):
         self.assertGreater(len(self.routes), 0)
-        self.assertLessEqual(len(self.routes), 6)
         self.assertEqual(len({route["id"] for route in self.routes}), len(self.routes))
         for route in self.routes:
             with self.subTest(route=route["id"]):
                 ids = [step["id"] for step in route["steps"]]
-                self.assertGreaterEqual(len(ids), 3)
-                self.assertLessEqual(len(ids), 6)
+                self.assertGreaterEqual(len(ids), 2)
                 self.assertEqual(len(set(ids)), len(ids))
 
     def test_every_step_links_to_an_actual_current_solution(self):

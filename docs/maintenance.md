@@ -1,111 +1,53 @@
-# leetcode 刷题之旅
+# 维护指南
 
-这个仓库用于保存 Go 语言 LeetCode 刷题记录、本地练习记录和少量学习笔记。
+日常只维护题解、测试和原始笔记。统计、索引和导航数据都从这些文件生成。
 
-## 目录约定
+## 日常流程
 
-- `leetcode/editor/cn/pXXXX/`：GoLand LeetCode Editor 插件按标准模板生成的新题解目录。
-- `leetcode/editor/cn/_legacy/`：历史存量题解隔离区，提交到 Git，但被 Go 工具链忽略。
-- `leetcode/_legacy/`：更早期的根目录散落练习隔离区，提交到 Git，但被 Go 工具链忽略。
-- `leetcode/editor/cn/doc/content/`：题面 Markdown 缓存；公开 GitHub 仓库默认不提交。
-- `leetcode/editor/cn/doc/note/`：本地笔记；有内容时适合提交。
-- `2026/`：按刷题路线重新整理的题解目录。
+1. 用 GoLand LeetCode Editor 生成 `leetcode/editor/cn/pXXXX/solution.go`，按需添加同目录的 `*_test.go`，运行改动包的 Go 测试。
+2. 思路继续写在 `2026/README.md` 的顶层编号条目中，以页面题号和题名开头；也可写入 `leetcode/editor/cn/doc/note/` 下以题号、题名命名的非空 Markdown 文件。空占位和只有标题的路线条目不算题解笔记。
+3. 将新文件加入 Git，提交并推送到 `master`。Actions 自动生成索引、运行检查、发布 GitHub Pages，并在需要时回写生成文件；拉取请求只检查，不发布。
 
-## 提交边界
+提交前检查变更范围，保留题解、测试、笔记及必要的配置；题面缓存、IDE 状态、cookie 和 token 留在本地。提交信息使用 `feat:`、`fix:`、`docs:` 或 `chore:` 加简述。
 
-建议提交：
+## 需要修改哪里
 
-- `*.go` 题解和对应 `*_test.go`。
-- `README.md`、专题笔记、刷题路线记录。
-- 插件生成的非密钥题库索引，例如 `leetcode/editor/cn/all.json`、`translation.json`；如果嫌变更噪声大，也可以不提交。
-- 本地笔记：`leetcode/editor/cn/doc/note/`，但空占位文件不建议提交。
+| 内容 | 修改位置 |
+| --- | --- |
+| 题解与测试 | 原来的 Go 文件和同目录测试文件 |
+| 思路、边界与易错点 | 原始笔记，不另抄一份目录 |
+| 缺少映射或其他平台题 | `catalog.config.json` 的 `sources`，参照现有条目补充路径、`id`、`title`，按需补 `url`、`topics` |
+| 题名、题型等修正 | 同配置的 `overrides`，键使用页面展示题号 |
+| 精选比较路线（可选） | `docs/explorer/learning-paths.js`；每一步写清楚比较什么，相邻步骤说明变化理由 |
 
-不建议提交：
+标准目录中的数字是插件内部 `questionId`，通过已入库的 `leetcode/editor/cn/all.json` 转换成页面题号，不要直接当成页面题号。该元数据文件由插件维护，索引不使用其中的通过状态。其他平台的编号与 LeetCode 重复时，笔记题名须与 `sources` 配置一致。普通题目关联按题型计算，无需逐题连线。
 
-- `.idea/`、`.vscode/`、`*.iml` 等本机 IDE 状态。
-- `.env*`、cookie、token、LeetCode 登录态。
-- `.serena/`、`task_plan.md`、`findings.md`、`progress.md` 等本地 agent 工作状态。
-- Go 测试/覆盖率/二进制产物。
-- 插件生成的题面缓存：`leetcode/editor/cn/doc/content/`、`doc/solution/`、`doc/submission/`。
+`docs/explorer/data.js` 和 `docs/CATALOG.md` 是生成结果，不直接编辑。导航统计只从题目记录计算；README 不保存题数、题型统计表或统计图片。收录表示有代码记录，“有测试”表示存在测试文件，都不代表在线判题或测试已通过。
 
-## 提交规范
+## 本地预览（可选）
 
-提交信息采用 Conventional Commits 风格：
-
-```text
-<type>: <summary>
-
-- <problem-id> <problem-title>
-- <problem-id> <problem-title>
-```
-
-常用 `type`：
-
-- `feat`：新增题解、测试或刷题记录。
-- `fix`：修正已有题解、测试或目录命名问题。
-- `docs`：只更新文档、笔记、模板说明。
-- `refactor`：目录迁移、包拆分、结构调整，不改变题解行为。
-- `chore`：仓库配置、忽略规则、非题解维护。
-
-每日题解提交建议使用 `feat`，并在正文列出当天完成的题目，例如：
-
-```text
-feat: add daily leetcode solutions
-
-- 435 无重叠区间
-- 452 用最少数量的箭引爆气球
-- 763 划分字母区间
-```
-
-如果同一天同时包含文档或结构调整，优先拆成独立提交；不方便拆分时，在正文继续列出非题解变更。
-
-如果历史上已经提交过 IDE 文件，单靠 `.gitignore` 不会取消跟踪，需要执行：
+新题解和笔记先用 `git add <文件路径>` 纳入 Git，再运行：
 
 ```bash
-git rm -r --cached .idea
+python scripts/build_catalog.py
 ```
 
-如果决定公开仓库不提交题面缓存，可取消跟踪已入库缓存但保留本地文件：
+用浏览器打开 `docs/explorer/index.html`。生成脚本只读取 Git 已跟踪的相关文件，不扫描缓存；无需安装前端依赖。
+
+修改导航或生成脚本后，运行：
 
 ```bash
-git rm -r --cached leetcode/editor/cn/doc/content leetcode/editor/cn/doc/solution leetcode/editor/cn/doc/submission
+python scripts/build_catalog.py --check
+python -m unittest discover -s scripts -p "test_*.py"
+node --test scripts/study-model.test.cjs
 ```
 
-## 插件模板
+`--check` 只检查是否过期，不写文件；若提示过期，重新生成。Actions 也会运行这些检查。题解代码另跑改动包的 Go 测试。
 
-GoLand LeetCode 插件的新题生成模板见 `docs/leetcode-editor-template.md`，可复用配置清单见 `docs/leetcode-editor-config.example.md`。这些文档只记录非密钥配置；插件登录态配置仍保留在本机用户级目录，不提交到 Git。
+## 遇到问题
 
-## Legacy 策略
+- **新题没出现**：先确认文件已加入 Git，再检查元数据映射；无法识别的文件列在 [待补映射](CATALOG.md#待补映射)，按上表补配置后重新生成。
+- **线上没更新**：查看仓库 Actions 的 `Build catalog and deploy Pages`；确认推送分支是 `master`、工作流已启用，Pages 来源是 GitHub Actions。工作流不能回写时，在本地生成并将生成文件一并提交。
+- **生成文件有冲突**：保留正确的题解、笔记和配置后重新生成，不逐条手改索引。
 
-历史散落题解已统一移动到 `_legacy` 目录：
-
-- `_legacy/root/`：原 `leetcode/editor/cn/` 根目录下的散落 `.go` / `*_test.go`。
-- `_legacy/<old-dir>/`：原有非标准旧目录，例如 `106/`、`212/`、`subsetsWithDup/`。
-- `leetcode/_legacy/root/`：更早期的 `leetcode/` 根目录散落 `.go` 文件。
-- `_legacy/` 目录名前缀为 `_`，Go 的 `./...` 包发现会跳过它，避免旧文件继续造成命名冲突和编译失败。
-
-legacy 文件只作为历史记录保留。需要复习、调试或补测试的旧题，应迁移到 `leetcode/editor/cn/pXXXX/` 后再维护。
-
-常用验证命令：
-
-```bash
-go test ./2026/...
-go test ./leetcode/editor/cn/...
-```
-
-提交前先跑目标目录测试，再视变更范围跑 `go test ./...`。
-
-## 验证策略
-
-当前阶段以目标 package 测试为准：
-
-```bash
-go test ./2026/...
-go test ./leetcode/editor/cn/...
-```
-
-如果改动跨越仓库根目录或非 LeetCode Editor 目录，再追加：
-
-```bash
-go test ./...
-```
+插件模板与配置分别见[模板说明](leetcode-editor-template.md)、[配置示例](leetcode-editor-config.example.md)。历史题解保留在 `_legacy/`；需要继续维护时迁入标准题解目录。

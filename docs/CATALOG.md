@@ -4,7 +4,7 @@
 
 题号按页面展示编号映射；同题多版本合并。收录表示有本地代码记录，不等于 LeetCode 已通过。测试链接表示存在测试文件。
 
-[交互导航的打开方式](catalog-guide.md) · [原始复习笔记](../2026/README.md)
+[导航使用说明](catalog-guide.md) · [维护指南](maintenance.md) · [原始复习笔记](../2026/README.md)
 
 ## 当前维护
 

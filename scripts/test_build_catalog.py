@@ -39,6 +39,11 @@ class CatalogIdentityTests(unittest.TestCase):
     def test_todo_placeholder_is_not_a_written_explanation(self):
         self.assertFalse(catalog.has_note_content("459.重复的子字符串: TODO"))
 
+    def test_topic_prefix_does_not_turn_a_bare_title_into_a_note(self):
+        self.assertFalse(catalog.has_note_content("数组：704.二分查找"))
+        self.assertFalse(catalog.has_note_content("数组：704.二分查找：TODO"))
+        self.assertTrue(catalog.has_note_content("数组：704.二分查找：维护左闭右开区间"))
+
     def setUp(self):
         self.internal, self.frontend, self.names, self.titles = (
             catalog.metadata_indexes(METADATA)
@@ -171,11 +176,11 @@ class CatalogIntegrationTests(unittest.TestCase):
         )
         self.write("2026/README.md", "# 数组\n1. 704 二分查找：维护左闭右开区间\n")
         data = self.build()
-        self.assertEqual(data["stats"]["total"], 1)
-        self.assertEqual(data["stats"]["active"], 1)
-        self.assertEqual(data["stats"]["archived"], 0)
-        self.assertEqual(data["stats"]["withTests"], 1)
-        self.assertEqual(data["stats"]["withNotes"], 1)
+        self.assertEqual(catalog.catalog_stats(data)["total"], 1)
+        self.assertEqual(catalog.catalog_stats(data)["active"], 1)
+        self.assertEqual(catalog.catalog_stats(data)["archived"], 0)
+        self.assertEqual(catalog.catalog_stats(data)["withTests"], 1)
+        self.assertEqual(catalog.catalog_stats(data)["withNotes"], 1)
         problem = data["problems"][0]
         self.assertEqual(problem["id"], "704")
         self.assertEqual(len(problem["sources"]), 2)
@@ -210,6 +215,28 @@ class CatalogIntegrationTests(unittest.TestCase):
         self.assertEqual(data["problems"], [])
         self.assertEqual(data["unindexed"], [source])
 
+    def test_new_platform_note_mapping_only_requires_config_not_generator_edits(self):
+        source = "2026/another-platform/solution.go"
+        config = json.loads((self.root / "catalog.config.json").read_text(encoding="utf-8"))
+        config["sources"][source] = {"id": "其他平台 58", "title": "独立区间统计"}
+        self.write("catalog.config.json", json.dumps(config))
+        self.write(source, "package intervalstats\n")
+        self.write("leetcode/editor/cn/p0058/solution.go", "package p0058\n")
+        self.write("2026/README.md", "# 数组\n1. 58 独立区间统计：用前缀和计算\n")
+        data = self.build()
+        problems = {problem["id"]: problem for problem in data["problems"]}
+        self.assertEqual(len(problems["其他平台 58"]["notes"]), 1)
+        self.assertEqual(problems["58"]["notes"], [])
+
+    def test_standalone_platform_note_uses_the_same_mapping_as_route_notes(self):
+        self.write("2026/intervalsum/solution.go", "package intervalsum\n")
+        self.write("leetcode/editor/cn/p0058/solution.go", "package p0058\n")
+        self.write("leetcode/editor/cn/doc/note/58区间和.md", "利用前缀和计算区间和。\n")
+        data = self.build()
+        problems = {problem["id"]: problem for problem in data["problems"]}
+        self.assertEqual(len(problems["卡码网 58"]["notes"]), 1)
+        self.assertEqual(problems["58"]["notes"], [])
+
     def test_explicit_source_mapping_can_repair_a_missing_internal_id(self):
         source = "leetcode/editor/cn/p9999/solution.go"
         config_path = self.root / "catalog.config.json"
@@ -230,8 +257,33 @@ class CatalogIntegrationTests(unittest.TestCase):
         cache.parent.mkdir(parents=True, exist_ok=True)
         cache.write_text("DO NOT PUBLISH THIS CACHE", encoding="utf-8")
         data = self.build()
-        self.assertEqual(data["stats"]["withNotes"], 0)
+        self.assertEqual(catalog.catalog_stats(data)["withNotes"], 0)
         self.assertNotIn("DO NOT PUBLISH THIS CACHE", json.dumps(data))
+
+    def test_statistics_follow_records_without_storing_duplicate_totals(self):
+        self.write("leetcode/editor/cn/p0792/solution.go", "package p0792\n")
+        data = self.build()
+        self.assertNotIn("stats", data)
+        self.assertEqual(catalog.catalog_stats(data)["total"], 1)
+        self.write("leetcode/editor/cn/_legacy/root/[763]划分字母区间.go", "package main\n")
+        updated = self.build()
+        self.assertEqual(catalog.catalog_stats(updated)["total"], 2)
+        self.assertEqual(catalog.catalog_stats(updated)["archived"], 1)
+        # A deleted tracked path may still appear in git ls-files until staged.
+        (self.root / "leetcode/editor/cn/_legacy/root/[763]划分字母区间.go").unlink()
+        self.assertEqual(catalog.catalog_stats(self.build())["total"], 1)
+        (self.root / "leetcode/editor/cn/p0792/solution.go").unlink()
+        self.assertTrue(all(value == 0 for value in catalog.catalog_stats(self.build()).values()))
+
+    def test_generation_does_not_require_or_rewrite_a_readme_or_stats_image(self):
+        self.write("leetcode/editor/cn/p0792/solution.go", "package p0792\n")
+        data = self.build()
+        # No README or generated-section markers exist in this repository fixture.
+        generated = catalog.outputs(data)
+        self.assertEqual(set(generated), {"docs/explorer/data.js", "docs/CATALOG.md"})
+        self.assertIn('"problems":', generated["docs/explorer/data.js"])
+        self.assertNotIn('"stats":', generated["docs/explorer/data.js"])
+        self.assertIn("704", generated["docs/CATALOG.md"])
 
 
 if __name__ == "__main__":

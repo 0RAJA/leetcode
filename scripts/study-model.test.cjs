@@ -13,6 +13,18 @@ const paths = context.window.LEETCODE_PATHS.paths;
 const problems = data.problems;
 const byId = new Map(problems.map((problem) => [problem.id, problem]));
 
+test('summary counts question records, not versions, and follows changed records', () => {
+  const rows = [
+    {active: true, notes: ['note'], sources: [{tests: ['a_test.go']}, {tests: ['b_test.go']}]},
+    {active: false, notes: [], sources: [{tests: []}]},
+  ];
+  assert.deepEqual(model.catalogSummary(rows), {total: 2, active: 1, archived: 1, withNotes: 1, withTests: 1});
+  rows[1].active = true;
+  rows[1].notes.push('new note');
+  assert.deepEqual(model.catalogSummary(rows), {total: 2, active: 2, archived: 0, withNotes: 2, withTests: 1});
+  assert.deepEqual(model.catalogSummary([]), {total: 0, active: 0, archived: 0, withNotes: 0, withTests: 0});
+});
+
 test('curated binary-search neighbor explains the boundary change', () => {
   const next = model.relatedProblems(byId.get('704'), problems, paths);
   assert.equal(next[0].problem.id, '34');
