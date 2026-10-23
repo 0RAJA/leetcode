@@ -1,0 +1,29 @@
+{
+  "repository": "https://github.com/0RAJA/leetcode",
+  "branch": "master",
+  "sources": {
+    "leetcode/editor/cn/_legacy/subsetsWithDup/main.go": {
+      "id": "90",
+      "title": "子集 II"
+    },
+    "2026/lemonadechange/solution.go": {
+      "id": "860",
+      "title": "柠檬水找零"
+    },
+    "2026/intervalsum/solution.go": {
+      "id": "卡码网 58",
+      "title": "区间和",
+      "url": "https://kamacoder.com/problempage.php?pid=1070",
+      "topics": ["数组", "前缀和"]
+    },
+    "2026/developerbuysland/solution.go": {
+      "id": "卡码网 44",
+      "title": "开发商购买土地",
+      "url": "https://kamacoder.com/problempage.php?pid=1044",
+      "topics": ["数组", "前缀和", "矩阵"]
+    }
+  },
+  "overrides": {
+    "1": {"topics": ["数组", "哈希表"]}
+  }
+}

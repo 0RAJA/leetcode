@@ -1,0 +1,92 @@
+name: Build catalog and deploy Pages
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'leetcode/**'
+      - '2026/**'
+      - 'scripts/**'
+      - 'catalog.config.json'
+      - 'README.md'
+      - 'docs/explorer/**'
+      - '.github/workflows/catalog.yml'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: read
+
+concurrency:
+  group: catalog-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Build and validate generated catalog
+        run: |
+          python scripts/build_catalog.py
+          python scripts/build_catalog.py --check
+      - name: Test catalog mapping and curated paths
+        run: python -m unittest discover -s scripts -p 'test_*.py'
+      - name: Test review rules and offline syntax highlighting
+        run: node --test scripts/study-model.test.cjs
+      - name: Configure GitHub Pages
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+        uses: actions/configure-pages@v5
+      - name: Package review navigator
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs/explorer
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy review navigator
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  refresh:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: master
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - run: python scripts/build_catalog.py
+      - name: Save updated catalog
+        run: |
+          git add README.md docs/CATALOG.md docs/assets/catalog.svg docs/explorer/data.js
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'docs: refresh solution catalog'
+          git push origin HEAD:master

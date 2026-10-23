@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="224" viewBox="0 0 1000 224" role="img" aria-labelledby="title desc">
+<title id="title">LeetCode 题解与复习索引</title><desc id="desc">当前维护 80 题，历史归档 487 题，关联笔记 125 题。</desc>
+<rect width="1000" height="224" rx="12" fill="#f2f1e9"/><rect x="0" y="0" width="10" height="224" fill="#657347"/>
+<g font-family="Georgia, 'Noto Serif SC', serif" fill="#273321"><text x="42" y="48" font-size="15" letter-spacing="3">RAJA / ALGORITHM NOTES</text>
+<text x="42" y="93" font-size="31">把做过的题，连成可回顾的思路。</text></g>
+<g font-family="'Microsoft YaHei', sans-serif" fill="#56604c" font-size="15"><text x="44" y="137">当前维护</text><text x="275" y="137">历史归档</text><text x="507" y="137">关联笔记</text><text x="740" y="137">带测试文件</text></g>
+<g font-family="Georgia, serif" fill="#283421" font-size="39"><text x="42" y="187">80</text><text x="273" y="187">487</text><text x="505" y="187">125</text><text x="738" y="187">19</text></g></svg>

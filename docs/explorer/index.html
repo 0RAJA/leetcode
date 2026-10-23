@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fa">
+  <meta name="description" content="Raja 的算法复习索引：按题型查找练习，回到当时的 Go 题解与思路笔记。">
+  <title>算法手记 · Raja</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232b5bd7'/%3E%3Ctext x='7' y='24' font-family='Georgia' font-size='27' fill='white'%3Er%3C/text%3E%3C/svg%3E">
+  <script src="vendor/highlight/highlight.min.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="learning-paths.js" defer></script>
+  <script src="study-model.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#question-list">跳到题目索引</a>
+  <aside class="sidebar" aria-label="题解导航">
+    <a class="brand" href="./index.html" aria-label="算法手记首页"><span class="brand-mark">r.</span><span>算法手记<small>RAJA / ALGORITHM NOTES</small></span></a>
+    <div class="sidebar-body">
+      <p class="section-label">我的练习</p>
+      <nav class="scope-nav" aria-label="练习范围">
+        <button type="button" data-scope="current" class="scope-button selected" aria-pressed="true"><span><i aria-hidden="true">▦</i> 当前练习</span><b id="count-current">—</b></button>
+        <button type="button" data-scope="all" class="scope-button" aria-pressed="false"><span><i aria-hidden="true">≡</i> 全部收录</span><b id="count-all">—</b></button>
+        <button type="button" data-scope="archive" class="scope-button" aria-pressed="false"><span><i aria-hidden="true">▱</i> 历史归档</span><b id="count-archive">—</b></button>
+        <button type="button" data-scope="review" class="scope-button" aria-pressed="false"><span><i aria-hidden="true">☆</i> 待复习</span><b id="count-review">0</b></button>
+      </nav>
+      <div class="topic-heading"><p class="section-label">按题型回顾</p><button type="button" id="clear-topic" class="text-button" hidden>清除</button></div>
+      <nav id="topic-nav" class="topic-nav" aria-label="常见题型"></nav>
+      <div class="sidebar-note"><span class="small-compass" aria-hidden="true">↗</span><p>做过之后，<br>也记得回头看看。</p><small>代码、思路、测试，放回同一道题。</small></div>
+    </div>
+    <div class="sidebar-footer"><span class="status-dot" aria-hidden="true"></span> Go 语言练习集<a id="repo-link" href="https://github.com/0RAJA/leetcode" target="_blank" rel="noopener noreferrer" aria-label="打开 GitHub 仓库">GitHub ↗</a></div>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar"><span>RAJA / ALGORITHM NOTES</span><div><a id="blog-link" href="https://blog.humraja.top/">← 返回博客</a><a id="readme-link" href="https://github.com/0RAJA/leetcode#readme" target="_blank" rel="noopener noreferrer">仓库说明 ↗</a></div></header>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="eyebrow"><span></span> SOLVE · CONNECT · REVISIT</p><h1 id="hero-title">把一道题，做成一类题。</h1><p class="hero-description">先独立回忆，再对照自己的解法。沿着边界、状态和变形，把相关的题连起来。</p><div class="hero-actions"><button type="button" id="random-review" class="primary-button">开始复习 <span aria-hidden="true">→</span></button><span class="hero-caption">从当前结果中选题，优先待复习；最近自评过的题往后放。</span></div></div>
+    </section>
+    <section class="stats" aria-label="收录概览"><div><span class="stat-number" id="stat-active">—</span><span class="stat-label">当前练习</span></div><div><span class="stat-number" id="stat-total">—</span><span class="stat-label">题目收录</span></div><div><span class="stat-number" id="stat-notes">—</span><span class="stat-label">关联思路笔记</span></div><div><span class="stat-number" id="stat-tests">—</span><span class="stat-label">附有测试文件</span></div></section>
+
+    <section class="index-section" id="question-list" aria-labelledby="list-title">
+      <div class="section-heading"><div><div class="section-title-row"><h2 id="list-title">当前练习</h2><span id="result-count" class="count-pill">— 道题</span></div><p id="scope-description">独立题解与本地练习，随时回到熟悉的思路。</p></div><div class="view-switch" role="group" aria-label="浏览方式"><button type="button" data-view="list" aria-pressed="true">题目列表</button><button type="button" data-view="map" aria-pressed="false">关联路径</button></div><button type="button" class="text-button reset-button" id="reset-filters" hidden>重置筛选 ↺</button></div>
+      <form class="filters" id="filter-form" role="search">
+        <label class="search-box"><span aria-hidden="true">⌕</span><span class="sr-only">搜索题号、题名、题型或笔记内容</span><input id="search" type="search" autocomplete="off" placeholder="搜索题号、题名、题型或笔记…"><kbd aria-hidden="true">/</kbd></label>
+        <label class="select-wrap"><span class="sr-only">题型</span><select id="topic-filter"><option value="">全部题型</option></select></label>
+        <label class="select-wrap difficulty-select"><span class="sr-only">难度</span><select id="difficulty-filter"><option value="">全部难度</option><option>简单</option><option>中等</option><option>困难</option><option>未标注</option></select></label>
+        <label class="select-wrap record-select"><span class="sr-only">记录类型</span><select id="record-filter"><option value="">全部记录</option><option value="notes">有思路笔记</option><option value="tests">有测试文件</option><option value="no-notes">待补笔记</option></select></label>
+      </form>
+      <div id="active-filters" class="active-filters" aria-live="polite"></div>
+      <section id="relationship-map" aria-label="题目关联路径" hidden></section>
+      <div id="list-view">
+      <div class="table-wrap"><table class="question-table"><caption class="sr-only">题解索引。点击题名查看笔记、代码与关联文件。</caption><thead><tr><th scope="col">题目</th><th scope="col">题型</th><th scope="col">难度</th><th scope="col">记录</th><th scope="col"><span class="sr-only">加入待复习</span></th></tr></thead><tbody id="questions"></tbody></table><div id="empty-state" class="empty-state" hidden><span aria-hidden="true">∅</span><h3>这里暂时没有题目</h3><p id="empty-description">试着换一个关键词，或者放宽筛选条件。</p><button type="button" id="empty-reset" class="secondary-button">重置筛选</button></div></div>
+      <div class="list-footer"><p id="pagination-description" aria-live="polite"></p><nav class="pagination" aria-label="题目分页"><button type="button" id="previous-page" aria-label="上一页">←</button><span id="page-label">1 / 1</span><button type="button" id="next-page" aria-label="下一页">→</button></nav></div>
+      </div>
+      <p id="mapping-notice" class="mapping-notice" hidden></p>
+    </section>
+    <footer class="main-footer"><p>按题目去重收录；文件存在不代表平台已通过。测试标记表示附有测试文件。</p><div><span id="storage-note">复习标记仅保存在当前浏览器</span><button type="button" id="export-review" class="text-button">导出标记 ↓</button><button type="button" id="import-review" class="text-button">导入标记 ↑</button><input type="file" id="review-file" accept="application/json,.json" hidden></div></footer>
+    <noscript><p class="load-error">请开启 JavaScript 查看交互索引，或直接阅读仓库中的 <a href="../CATALOG.md">Markdown 题目目录</a>。</p></noscript>
+    <p id="load-error" class="load-error" hidden></p>
+  </main>
+
+  <dialog id="problem-dialog" aria-labelledby="detail-title">
+    <div class="dialog-topline"><span id="detail-eyebrow">题目手记</span><button type="button" id="back-problem" class="text-button" hidden>← 返回上一题</button><button type="button" id="close-dialog" class="icon-button" aria-label="关闭题目详情">×</button></div>
+    <div class="detail-heading"><div><h2 id="detail-title"></h2><div id="detail-tags" class="detail-tags"></div></div><button type="button" id="detail-review" class="secondary-button"></button></div>
+    <div class="detail-layout">
+      <div class="detail-content">
+        <div role="tablist" aria-label="题目内容" class="detail-tabs">
+          <button type="button" id="recall-tab" role="tab" aria-controls="recall-panel" aria-selected="true">先回忆</button>
+          <button type="button" id="notes-tab" role="tab" aria-controls="notes-panel" aria-selected="false" tabindex="-1">思路笔记 <span id="detail-note-count"></span></button>
+          <button type="button" id="code-tab" role="tab" aria-controls="code-panel" aria-selected="false" tabindex="-1">Go 题解 <span id="detail-source-count"></span></button>
+        </div>
+        <section id="recall-panel" role="tabpanel" aria-labelledby="recall-tab">
+          <div class="recall-box"><p class="eyebrow">先给自己一次独立尝试</p><h3 id="recall-focus">这道题的关键状态和边界是什么？</h3><p id="recall-route"></p><ol><li>打开原题，先说出解题思路和复杂度。</li><li>想想循环不变量、状态转移或终止条件。</li><li>拿一个边界例子验证，再看自己的实现。</li></ol><div class="hero-actions"><a id="recall-problem-link" class="primary-button" target="_blank" rel="noopener noreferrer">打开原题 ↗</a><button type="button" id="reveal-notes" class="secondary-button">看思路提示</button><button type="button" id="reveal-code" class="text-button">直接看 Go 题解 →</button></div></div>
+        </section>
+        <section id="notes-panel" role="tabpanel" aria-labelledby="notes-tab" hidden></section>
+        <section id="code-panel" role="tabpanel" aria-labelledby="code-tab" hidden><div class="code-toolbar"><label for="source-select">题解版本</label><select id="source-select"></select><button type="button" id="copy-code" class="text-button">复制代码</button></div><pre class="source-code" tabindex="0"><code id="source-code" class="language-go"></code></pre><p id="source-path" class="source-path"></p></section>
+        <div class="recall-actions"><span>尝试后自评</span><button type="button" id="rate-again" class="secondary-button">需要再练</button><button type="button" id="rate-recalled" class="secondary-button">能独立写出</button><button type="button" id="clear-rating" class="text-button" hidden>清除此题自评</button><p id="review-result" role="status"></p></div>
+        <section class="related-problems" aria-labelledby="related-title"><h3 id="related-title">接着比较什么</h3><div id="related-problems"></div></section>
+      </div>
+      <aside class="detail-sidebar"><p class="section-label">回到原始记录</p><a id="detail-problem-link" class="resource-link" target="_blank" rel="noopener noreferrer">打开原题 <span>↗</span></a><div id="detail-resources"></div><div class="detail-tip"><span>复习标记只保存在当前浏览器</span><p>“需要再练”加入待复习；<br>“能独立写出”移出队列。<br>自评不等于平台通过记录。</p></div></aside>
+    </div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
