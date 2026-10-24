@@ -24,6 +24,14 @@ def read(root, path):
     return (root / path).read_text(encoding="utf-8-sig")
 
 
+def read_json(root, path):
+    """Read catalog metadata, retaining the source path and position on JSON errors."""
+    try:
+        return json.loads(read(root, path))
+    except json.JSONDecodeError as error:
+        raise ValueError(f"{path}:{error.lineno}:{error.colno} JSON 格式错误：{error.msg}") from error
+
+
 def tracked_paths(root):
     # Only inspect versioned files: ignored caches, cookies and IDE state stay out.
     result = subprocess.run(
@@ -154,6 +162,19 @@ def configured_note_ids(text, problems, identities):
     return {identity for length, identity in matches if length == longest}
 
 
+def is_todo_only(text):
+    """Recognize TODO-only placeholders, including comment and Markdown prefixes."""
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    return bool(lines) and all(re.fullmatch(
+        r"(?:(?://|[#>*-])\s*)?TODO[.!。！]?", line, re.IGNORECASE
+    ) for line in lines)
+
+
+def has_standalone_note_content(text):
+    """A standalone note needs nonempty text beyond a TODO placeholder."""
+    return bool(text.strip()) and not is_todo_only(text)
+
+
 def has_note_content(text):
     # A bare numbered title is an entry in a route, not a written explanation.
     lines = text.splitlines()
@@ -162,6 +183,10 @@ def has_note_content(text):
     lines[0] = entry_heading(text)
     if re.search(r"[：:]\s*TODO\s*$", "\n".join(lines), re.IGNORECASE):
         return False
+    inline = re.search(r"[：:]\s*(.*)$", lines[0])
+    if is_todo_only("\n".join(lines[1:])) and (
+            not inline or not inline.group(1).strip() or is_todo_only(inline.group(1))):
+        return False
     return len(lines) > 1 or bool(re.search(r"[：:]\s*\S", lines[0]))
 
 
@@ -169,8 +194,8 @@ def build_catalog(root, paths=None):
     paths = tracked_paths(root) if paths is None else sorted(set(paths))
     paths = [path for path in paths if (root / path).is_file()]
     path_set = set(paths)
-    config = json.loads(read(root, "catalog.config.json"))
-    records = json.loads(read(root, "leetcode/editor/cn/all.json"))
+    config = read_json(root, "catalog.config.json")
+    records = read_json(root, "leetcode/editor/cn/all.json")
     internal, frontend, names, titles = metadata_indexes(records)
     problems = {}
     unindexed = []
@@ -256,13 +281,13 @@ def build_catalog(root, paths=None):
         text = read(root, path).strip()
         local_ids = configured_note_ids(PurePosixPath(path).stem, problems, configured_ids)
         if local_ids:
-            if text and len(local_ids) == 1:
+            if has_standalone_note_content(text) and len(local_ids) == 1:
                 problems[next(iter(local_ids))]["notes"].append({
                     "title": "独立笔记", "text": text, "path": path, "anchor": "",
                 })
             continue
         found = filename_identity(path, frontend, names, titles)
-        if text and found and found[0] in problems:
+        if has_standalone_note_content(text) and found and found[0] in problems:
             problems[found[0]]["notes"].append({
                 "title": "独立笔记", "text": text, "path": path, "anchor": "",
             })

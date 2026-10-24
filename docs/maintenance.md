@@ -6,9 +6,49 @@
 
 1. 用 GoLand LeetCode Editor 生成 `leetcode/editor/cn/pXXXX/solution.go`，按需添加同目录的 `*_test.go`，运行改动包的 Go 测试。
 2. 思路继续写在 `2026/README.md` 的顶层编号条目中，以页面题号和题名开头；也可写入 `leetcode/editor/cn/doc/note/` 下以题号、题名命名的非空 Markdown 文件。空占位和只有标题的路线条目不算题解笔记。
-3. 将新文件加入 Git，提交并推送到 `master`。Actions 自动生成索引、运行检查、发布 GitHub Pages，并在需要时回写生成文件；拉取请求只检查，不发布。
+3. 将题解和笔记用 `git add` 暂存，再执行 `git commit`。启用本地 hook 后，提交前自动检查收录情况、生成并暂存索引。
+4. 推送到 `master`。Actions 仍会生成索引、运行检查、发布 GitHub Pages，并在需要时回写生成文件；拉取请求只检查，不发布。
 
 提交前检查变更范围，保留题解、测试、笔记及必要的配置；题面缓存、IDE 状态、cookie 和 token 留在本地。提交信息使用 `feat:`、`fix:`、`docs:` 或 `chore:` 加简述。
+
+## 本地提交前校验
+
+每次新克隆仓库后安装一次，需要 Python 3.10 或更新版本，无第三方依赖：
+
+```bash
+python3 scripts/pre_commit.py --install
+```
+
+安装命令只设置本仓库的 `core.hooksPath=.githooks`，可重复执行。如果已有其他 hook 路径或活动 hook，会提示手工合并，不会直接覆盖。
+
+日常提交可按以下流程操作：
+
+```bash
+git add leetcode/editor/cn/p0031/solution.go 2026/README.md
+python3 scripts/pre_commit.py --check  # 可选：只读预览，不写文件或暂存区
+git commit -m "feat: add daily leetcode solutions"
+```
+
+hook 使用暂存区的题解、笔记、元数据和生成脚本，部分暂存时也不会混入未暂存内容；检查通过后自动更新并暂存 `docs/CATALOG.md`、`docs/explorer/data.js`。若生成文件已有未暂存改动，会阻止提交，保留文件供你处理。
+
+检查结果会显示文件和行号：
+
+- `OK`：题解或笔记已被索引实际收录。
+- `WARN`：只有标题、TODO 或空笔记暂不收录，仍允许提交。
+- `ERROR`：题解路径或题号映射缺失、笔记无法关联题解、题号与题名不符、顶层编号格式错误、题目条目缩进、代码块未闭合或配置/元数据 JSON 格式错误。修正并重新 `git add` 后再提交。
+
+沿用原有格式即可，例如：
+
+```text
+51. 31 下一个排列
+    // 从右向左找下降位置，交换后翻转右侧。
+```
+
+hook 比较 `HEAD` 与暂存区，只阻止本次新增或修改后出现的问题；原有未收录记录、历史题名别称不会阻塞无关提交，数量会在摘要中提示。新增笔记应使用页面题号和正式题名。Go 测试仍按改动包单独运行，收录不代表算法正确或在线判题通过。
+
+请使用“先 `git add`，再普通 `git commit`”的方式。如果 `git commit 文件名`、`--only` 或 IDE 创建了临时暂存区，且本次需要更新索引，hook 会阻止提交并提示上述操作，避免提交后留下反向索引差异。
+
+本地 hook 可由 Git 跳过，也不会随克隆自动启用，因此远端 Actions 继续保留。需要停用时执行 `git config --local --unset core.hooksPath`，之后仍可手工生成索引。
 
 ## 需要修改哪里
 

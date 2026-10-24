@@ -39,6 +39,11 @@ class CatalogIdentityTests(unittest.TestCase):
     def test_todo_placeholder_is_not_a_written_explanation(self):
         self.assertFalse(catalog.has_note_content("459.重复的子字符串: TODO"))
 
+    def test_separate_todo_body_is_not_a_written_explanation(self):
+        self.assertFalse(catalog.has_note_content("704 二分查找\nTODO"))
+        self.assertFalse(catalog.has_note_content("704 二分查找\n// TODO\n- TODO"))
+        self.assertTrue(catalog.has_note_content("704 二分查找：维护区间\nTODO"))
+
     def test_topic_prefix_does_not_turn_a_bare_title_into_a_note(self):
         self.assertFalse(catalog.has_note_content("数组：704.二分查找"))
         self.assertFalse(catalog.has_note_content("数组：704.二分查找：TODO"))
@@ -259,6 +264,11 @@ class CatalogIntegrationTests(unittest.TestCase):
         data = self.build()
         self.assertEqual(catalog.catalog_stats(data)["withNotes"], 0)
         self.assertNotIn("DO NOT PUBLISH THIS CACHE", json.dumps(data))
+
+    def test_todo_only_standalone_note_is_not_published(self):
+        self.write("leetcode/editor/cn/p0792/solution.go", "package p0792\n")
+        self.write("leetcode/editor/cn/doc/note/704二分查找.md", "TODO\n")
+        self.assertEqual(catalog.catalog_stats(self.build())["withNotes"], 0)
 
     def test_statistics_follow_records_without_storing_duplicate_totals(self):
         self.write("leetcode/editor/cn/p0792/solution.go", "package p0792\n")
