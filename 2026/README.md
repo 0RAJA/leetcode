@@ -515,3 +515,32 @@
     // 维护两个节点（前后节点），间隔 n 个节点，当其中一个节点跑到头的时候删掉 Next 节点
 56. 17 电话号码的字母组合
     // 递归遍历，记录每个层级，每个层级进行对应数字的尝试
+57. 5 最长回文子串
+    // 中心拓展法：每次尝试1个元素 or 2个元素为中心向外拓展 O(N2)
+58. 3 无重复字符的最长子串
+    // 滑动窗口+哈希表
+    // 哈希表记录右边界遇到的字符所在位置，每次滑动窗口右边界纳入新字符时据此找到上一个重复字符位置来收紧左边界
+59. 2 两数相加
+    // 依次合并 l1 和 l2 节点以及前一个节点的进位；终止条件为：node1 == nil && node2 == nil && 前一个进位 == 0
+60. 79 单词搜索
+    // 深搜 DFS，每轮依次遍历下一个可选位置，然后记录当前访问了哪个位置（回退后可以取消标记）;注意一个元素的情况
+61. 114 二叉树展开为链表
+    // 前序遍历进行展开，并返回当前节点前序遍历后的最后一个节点；也就是先把左节点接到右节点，再把当前节点右节点换成左节点
+    // if theLastOneNode(root.Left):
+    //  theLastOneNode(root.Left).Right = root.Right
+    //  root.Right = root.Left
+    // root.Left = nil
+    // return theLastOneNode(root.Right) or theLastOneNode(root.Left) or root
+62. 621 任务调度器
+    // 最大出现次数: maxCount;间隔：n；最大出现次数的任务个数：maxCountTask
+    // 1. 以最多出现次数的元素为骨架来计算基本间隔：(maxCount-1)*(n+1) + maxCountTask 最后的 maxCountTask 是除去骨架后的零散元素
+    // 2. 但是假设任务很多，其他任务已经足够填满所有空槽，此时根本不需要 idle。
+63. 617 合并二叉树
+    // root1.Left = mergeTrees(root1.Left,root2.Left)
+    // root1.Right = mergeTrees(root1.Right, root2.Right)
+    // return root1
+64. 105 从前序与中序遍历序列构造二叉树
+    /*
+    前序遍历： 确定当前子树的根节点是谁。
+    中序遍历： 确定左右子树的边界，以及各自有多少个节点。
+    */
