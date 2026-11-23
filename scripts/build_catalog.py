@@ -40,6 +40,38 @@ def tracked_paths(root):
     return sorted(set(result.stdout.decode("utf-8").split("\0")) - {""})
 
 
+def latest_commit_times(root, paths):
+    """Return the latest commit time for each tracked source path."""
+    if not paths or not (root / ".git").exists():
+        return {}
+
+    result = {}
+    paths = sorted(set(paths))
+    for offset in range(0, len(paths), 64):
+        batch = paths[offset:offset + 64]
+        output = subprocess.run(
+            ["git", "-c", "core.quotepath=false", "--literal-pathspecs", "log",
+             "--format=%x1e%ct", "--name-only", "--no-renames",
+             "--diff-filter=AM", "--", *batch],
+            cwd=root, check=True, capture_output=True,
+        ).stdout.decode("utf-8", errors="surrogateescape")
+        for record in output.split("\x1e"):
+            lines = record.splitlines()
+            if not lines:
+                continue
+            try:
+                timestamp = int(lines[0].strip())
+            except ValueError:
+                continue
+            for path in lines[1:]:
+                path = path.strip()
+                if path in batch and path not in result:
+                    result[path] = timestamp
+        for path in batch:
+            result.setdefault(path, 0)
+    return result
+
+
 def metadata_indexes(records):
     internal = {str(row["questionId"]): row for row in records}
     frontend = {str(row["frontendQuestionId"]): row for row in records}
@@ -257,23 +289,28 @@ def build_catalog(root, paths=None):
     route = "2026/README.md"
     configured_ids = {source["id"] for source in config.get("sources", {}).values()}
     if route in path_set:
-        for section, text in note_entries(read(root, route)):
+        for practice_order, (section, text) in enumerate(note_entries(read(root, route)), start=1):
             # Custom platforms can reuse a LeetCode number. Match their configured
             # titles before numeric fallback; new mappings need no code changes.
             local_ids = configured_note_ids(text, problems, configured_ids)
             if local_ids:
-                if len(local_ids) == 1 and has_note_content(text):
-                    problems[next(iter(local_ids))]["notes"].append({
+                if len(local_ids) == 1:
+                    problem = problems[next(iter(local_ids))]
+                    problem["practiceOrder"] = practice_order
+                    if has_note_content(text):
+                        problem["notes"].append({
+                            "title": section, "text": text, "path": route,
+                            "anchor": section.lower().replace(" ", "-"),
+                        })
+                continue
+            identity = entry_identity(text, frontend, titles)
+            if identity in problems:
+                problems[identity]["practiceOrder"] = practice_order
+                if has_note_content(text):
+                    problems[identity]["notes"].append({
                         "title": section, "text": text, "path": route,
                         "anchor": section.lower().replace(" ", "-"),
                     })
-                continue
-            identity = entry_identity(text, frontend, titles)
-            if identity in problems and has_note_content(text):
-                problems[identity]["notes"].append({
-                    "title": section, "text": text, "path": route,
-                    "anchor": section.lower().replace(" ", "-"),
-                })
 
     for path in paths:
         if not path.startswith("leetcode/editor/cn/doc/note/") or not path.endswith(".md"):
@@ -291,6 +328,19 @@ def build_catalog(root, paths=None):
             problems[found[0]]["notes"].append({
                 "title": "独立笔记", "text": text, "path": path, "anchor": "",
             })
+
+    source_paths = {source["path"] for problem in problems.values()
+                    for source in problem["sources"]}
+    commit_times = latest_commit_times(root, source_paths)
+    for problem in problems.values():
+        current_sources = [source for source in problem["sources"]
+                           if source["kind"] == "current"]
+        relevant_sources = current_sources or problem["sources"]
+        problem["lastPracticedAt"] = max(
+            (commit_times.get(source["path"], 0) for source in relevant_sources),
+            default=0,
+        )
+        problem.setdefault("practiceOrder", 0)
 
     rows = sorted(problems.values(), key=lambda p: sort_id(p["id"]))
     for row in rows:

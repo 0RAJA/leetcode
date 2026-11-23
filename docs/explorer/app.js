@@ -17,7 +17,7 @@
   const attemptKey = "raja-leetcode-attempts-v1";
   const pageSize = 16;
   const scopes = {
-    current: ["当前练习", "独立题解与本地练习，随时回到熟悉的思路。"],
+    current: ["当前练习", "最近练题排在前面；可按题型筛选，或切换题号排序。"],
     all: ["全部收录", "按题号去重，串起当前练习与历史归档。"],
     archive: ["历史归档", "仅展示尚未整理到当前练习的历史题目；代码保留当时的样子。"],
     review: ["待复习", "给值得再想一次的题目，留一个位置。标记仅保存在当前浏览器。"],
@@ -25,6 +25,7 @@
   const query = new URLSearchParams(location.search);
   const state = {
     scope: Object.hasOwn(scopes, query.get("scope")) ? query.get("scope") : "current",
+    sort: ["recent", "id-asc", "id-desc"].includes(query.get("sort")) ? query.get("sort") : "recent",
     q: query.get("q") || "",
     topic: query.get("topic") || "",
     difficulty: query.get("difficulty") || "",
@@ -70,7 +71,14 @@
   const hasTests = (problem) => problem.sources.some((source) => source.tests.length > 0);
   const difficultyClass = (value) => ({ "简单": "easy", "中等": "medium", "困难": "hard" }[value] || "");
   const scopeBase = () => problems.filter((problem) => state.scope === "current" ? problem.active : state.scope === "archive" ? !problem.active : state.scope === "review" ? reviews.has(problem.id) : true);
-  const ordered = (items) => [...items].sort((a, b) => a.id.localeCompare(b.id, "zh-CN", { numeric: true }));
+  const compareIds = (a, b) => a.id.localeCompare(b.id, "zh-CN", { numeric: true });
+  const ordered = (items) => [...items].sort((a, b) => {
+    if (state.sort === "id-asc") return compareIds(a, b);
+    if (state.sort === "id-desc") return compareIds(b, a);
+    return (b.lastPracticedAt || 0) - (a.lastPracticedAt || 0)
+      || (b.practiceOrder || 0) - (a.practiceOrder || 0)
+      || compareIds(b, a);
+  });
   const showToast = (text) => {
     clearTimeout(toastTimeout);
     const target = $("problem-dialog").open ? $("reader-toast") : $("toast");
@@ -104,7 +112,7 @@
     const url = new URL(location.href);
     url.search = "";
     for (const [key, value] of Object.entries(state)) {
-      if (key !== "page" && value && !(key === "scope" && value === "current") && !(key === "view" && value === "list")) url.searchParams.set(key, value);
+      if (key !== "page" && value && !(key === "scope" && value === "current") && !(key === "view" && value === "list") && !(key === "sort" && value === "recent")) url.searchParams.set(key, value);
     }
     try { history.replaceState(null, "", url); } catch (_) { /* Local file URLs can restrict history changes. */ }
   };
@@ -244,6 +252,7 @@
       button.setAttribute("aria-pressed", String(selected));
     }
     $("search").value = state.q;
+    $("sort-order").value = state.sort;
     $("difficulty-filter").value = state.difficulty;
     $("record-filter").value = state.record;
     renderTopics();
@@ -592,7 +601,7 @@
   });
   $("filter-form").addEventListener("submit", (event) => event.preventDefault());
   $("search").addEventListener("input", (event) => { state.q = event.target.value; state.page = 1; render(); });
-  for (const [control, key] of [["topic-filter", "topic"], ["difficulty-filter", "difficulty"], ["record-filter", "record"]]) $(control).addEventListener("change", (event) => { state[key] = event.target.value; state.page = 1; render(); });
+  for (const [control, key] of [["topic-filter", "topic"], ["difficulty-filter", "difficulty"], ["record-filter", "record"], ["sort-order", "sort"]]) $(control).addEventListener("change", (event) => { state[key] = event.target.value; state.page = 1; render(); });
   document.addEventListener("click", (event) => {
     const view = event.target.closest("[data-view]");
     if (view) { state.view = view.dataset.view; render(); return; }
