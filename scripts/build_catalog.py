@@ -44,6 +44,13 @@ def latest_commit_times(root, paths):
     """Return the latest commit time for each tracked source path."""
     if not paths or not (root / ".git").exists():
         return {}
+    head = subprocess.run(
+        ["git", "rev-parse", "--verify", "HEAD"],
+        cwd=root, capture_output=True,
+    )
+    if head.returncode:
+        # Fresh test repositories may be initialized before their first commit.
+        return {}
 
     result = {}
     paths = sorted(set(paths))
